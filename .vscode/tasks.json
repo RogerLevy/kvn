@@ -1,0 +1,59 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build-engineer",
+            "type": "shell",
+            "command": "${workspaceFolder}/vfxland5_01/engineer/build.bat",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "isBackground": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "close": true,
+                "focus": false,
+                "panel": "dedicated",
+                "clear": false
+            }
+        },
+        {
+            "label": "load-project",
+            "type": "shell",
+            "command": "${workspaceFolder}/vfxland5_01/engineer/load-project.bat",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "isBackground": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "close": true,
+                "focus": false,
+                "panel": "dedicated",
+                "clear": false
+            }
+        },
+        {
+            "label": "build-engineer-and-load-project",
+            "type": "shell",
+            "command": "${workspaceFolder}/vfxland5_01/engineer/build-and-load.bat",
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "group": "build",
+            "isBackground": true,
+            "presentation": {
+                "echo": true,
+                "reveal": "never",
+                "close": true,
+                "focus": false,
+                "panel": "dedicated",
+                "clear": false
+            }
+        },
+    ]
+}

@@ -1,0 +1,38 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "vfxland5_01"
+		}
+	],
+	"settings": {
+		"explorer.autoReveal": false,
+		"explorer.compactFolders": true,
+		"explorer.excludeGitIgnore": true,
+		"explorer.fileNesting.enabled": true,
+		"explorer.sortOrder": "type",
+		"search.quickAccess.preserveInput": true,
+		"search.searchEditor.reusePriorSearchConfiguration": true,
+		"search.searchOnType": false,
+		"search.sortOrder": "modified"
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "build-engineer",
+				"dependsOn": [
+					"build-engineer" 
+				]
+			},
+			{
+				"label": "launch-engineer",
+				"dependsOn": [
+					"launch-engineer"
+				]
+			}
+		]
+	}
+}
