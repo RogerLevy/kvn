@@ -1,0 +1,69 @@
+\ ------------------------------------------------------------------------------
+\ K.V.N. Savegame
+\ ------------------------------------------------------------------------------
+
+|| 0 value #1
+|| : fn  s" kvn.sav" ;
+|| : read  #1 read-file throw drop ;
+|| : write  #1 write-file throw ;
+|| : write-chunk  >r rp@ 4 write r> write ;
+|| : read-int  0 >r rp@ 4 read r> ;
+|| : read-chunk  ( - a n ) read-int dup allocate throw swap 2dup read ;
+|| : cr's  2dup  over + swap do  i c@ $a = if $20 i c! then  loop ; 
+|| : eval-chunk  read-chunk over >r 2dup type cr's evaluate r> free drop ;
+|| : done?  #1 file-position throw #1 file-size throw 1 0 d- d> ;
+|| : c"type"  ( $ - ) .\" c\" " count type .\" \"" space ;
+|| : write-inventory
+    s[ ." divest" cr s] write-chunk 
+    inventory walk> s[ ? c"type" ." get" cr s] write-chunk ;
+|| : write-variables
+    s[ #deaths ? ." #deaths !" cr s] write-chunk
+    s[ clock ? ." clock !" cr s] write-chunk 
+    s[ gametime swap . . ." to gametime" cr s] write-chunk
+    s[ payment ? ." payment !" cr s] write-chunk 
+    s[ #secrets ? ." #secrets !" cr s] write-chunk 
+;
+|| : write-actors
+    actives>
+        cla @ object% = ?exit
+        r# @ 0< ?exit
+        s[
+            me actor# . ." priority " 
+            x 2@ 2.> swap . . ." at " 
+            cla @ .name ."  *[[ "
+            me peeked
+            ." ]] " cr
+        s] write-chunk ;
+|| : write-persisters
+    ;
+|| : write-world
+    stow
+    s" read-world " write-chunk
+    mram  /screen #rooms *  write-chunk
+    #rooms for
+        i room takeout
+        s[ i . ." room clear " cr s] write-chunk
+        write-actors
+        s[ ." stow" cr s] write-chunk
+        stow
+    loop
+    write-persisters ;
+|| : read-savefile
+    begin eval-chunk done? until ;
+: read-world
+    clear-temps
+    read-chunk over >r mram swap move
+    r> free drop ;
+: save
+    fn w/o create-file throw to #1
+    write-variables
+    write-inventory
+    p1 -> x 2@ room# @
+        write-world
+    s[ . ." warp " 2p. ." ?kvn -> x 2!" s] 2dup write-chunk evaluate
+    #1 close-file throw ;
+: resume
+    fn r/o open-file throw to #1
+    read-savefile
+    #1 close-file throw ;
+: save-exists?  fn file-exists? ;

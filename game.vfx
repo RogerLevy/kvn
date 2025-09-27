@@ -1,0 +1,51 @@
+require scripts\kvn.vfx
+require savegame.vfx
+
+: render  backsprites  bg  sprites  hud  ;
+: think  animate step ?travel instalment ; \ ?select ;
+: init-state  divest  0 0 to gametime ;
+
+: new
+    init-state  load-world
+    600 warp
+    240 228 at ?kvn to p1  ;
+
+: game
+    can-save on
+    hush
+    show>
+        generate
+        think
+        <t> pressed? if clock toggle then
+        <m> pressed? if mute toggle then
+        mute @ not 0.25 and gain
+        crt>  render  1 gamelife +!  gametime usdelta 0 d+ to gametime ;
+
+\ Restart
+
+: restart ( - )
+    blank blank blank blank  new game ;
+
+: retry ( - )
+    blank blank  20 228 at ?kvn to p1  game ;
+
+\ Kickoff
+: boot-kvn ( - )
+    init-supershow 
+    0 gamelife !
+    debug @ if
+        new game
+    else
+        save-exists? if resume game else new game then
+    then ;
+
+\ Automatic saving
+: ?save
+    debug @ ?exit
+    can-save @ -exit
+    p1 -> falling @ ?exit
+    save ;
+
+' ?save atexit
+
+' boot-kvn is boot

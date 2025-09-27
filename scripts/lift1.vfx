@@ -1,0 +1,16 @@
+class: lift1
+    actor derive
+
+: physics
+    me p1 hit? -exit
+    y @ p1 -> y @ <= -exit
+    y @ y1 @ >. + p1 [[ h1 @ >. - y1 @ >. - y ! ]] ;
+
+lift1% :: init
+    lift.png bmp !
+    \ -1. vy !
+    ['] physics phys !
+    -4 -2 x1 2! 8 4 w1 2!
+    act> y @ -8. <= -exit 248. y ! ;
+
+class;

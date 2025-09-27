@@ -1,0 +1,60 @@
+\ ------------------------------------------------------------------------------
+\ K.V.N. Death Screen
+\ ------------------------------------------------------------------------------
+private
+
+\ Payment
+defer paying
+: paying1  ;  ' paying1 is paying
+: paying2  s" -$1000" print ;
+: paying3  s[ ." -$" payment ? s] print ;
+: next
+    money-flashing off
+    s" gameover" gevent
+;
+: skipable
+    *actor as> act>
+        <start> pressed? -exit 
+        me unload
+        next
+;
+
+\ Movie
+: movie
+    just blank 
+    1.5 timer>
+        ['] paying2 is paying
+\    1.0 timer>
+        c" money" have 1000 >= if
+            1000 pay
+            \ ['] paying3 is paying
+            2.5 timer>
+                s" retry" gevent 
+        else
+            ( make money flash then gameover)
+            skipable
+            money-flashing on
+            3.0 timer>
+                next
+        then
+;
+
+\ Text
+: centered  2dup textw 2 / negate 0 +at ;
+: text
+    1 gamelife +! 
+    160 120 8 - at  s" DEAD" centered print
+    -8 32 +at  paying
+;
+
+public
+
+: death ( - )
+    godmode @ ?exit
+    death/ movie 
+    1 #deaths +!
+    ['] paying1 is paying
+    *beep18*
+    show>
+        step instalment
+        crt> hud text ;

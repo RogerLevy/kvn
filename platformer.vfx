@@ -1,0 +1,35 @@
+\ ------------------------------------------------------------------------------
+\ Platformer System
+\
+\ WIP
+\ ------------------------------------------------------------------------------
+
+prop hp
+prop fac
+prop falling
+prop in-air
+prop climbing
+
+static gravity
+static terminal-vy
+static jumppower 
+static risepower 
+static walkspeed
+static inertia
+
+m: _walk  drop ;  : walk  me _walk ;
+m: _jump ;        : jump  in-air on  me _jump ;
+m: _squat ;       : squat  me _squat ;
+m: _idle ;        : idle  me _idle ;
+\ m: _die ;         : die  me _die ;
+m: _fall ;        
+\ m: kill ;
+m: burn ;
+m: _climb ;       : climb me _climb ;
+m: collide  drop ;
+
+: revive   100 hp ! idle ;
+: fall
+    in-air on
+    falling @ not  if  falling on  me _fall  then ;
+    \ ; \ in-air on falling on me _fall ;

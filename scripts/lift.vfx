@@ -1,0 +1,6 @@
+static is-lift
+|| create lmap /screen allot&erase
+|| 223 1 1 lmap spot !
+|| 0 value xt
+: liftcol> ( x y w h me=obj - ) ( f - f )    
+    ;

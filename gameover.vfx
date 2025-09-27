@@ -1,0 +1,28 @@
+\ ------------------------------------------------------------------------------
+\ K.V.N. Game Over Screen
+\ ------------------------------------------------------------------------------
+private
+
+: movie
+    clear blank 
+    3.0 timer>
+        s" restart" gevent 
+;
+: centered  2dup textw 2 / negate 0 +at ;
+: skipable
+    0.25 timer>
+    *actor as> act>
+        <start> pressed? -exit 
+        me unload
+        s" restart" gevent 
+;
+
+public : gameover
+    gameover/ blank blank movie skipable 
+    1 #deaths +!
+    s" kvn.sav" delete-file drop
+    *beep3*
+    show>
+        step
+        crt> 
+            160 120 8 - at  s" GAME OVER" centered print ;

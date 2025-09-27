@@ -1,0 +1,13 @@
+[x] fix over-greediness of tread>
+[x] add PC speaker sounds
+[ ] lift collisions
+[ ] flamethrower hazard
+[ ] ceiling slime hazard
+[ ] ceiling spikes (improve instakill logic, like moving to a tread> statement)
+[ ] crumbling blocks (regenerating and non-regenerating)
+
+
+???????????????
+[ ] fireman poles
+[ ] secret items
+[ ] destructible blocks - pick up (regenerating) dynamite, put down & explode

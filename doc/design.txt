@@ -1,0 +1,10 @@
+
+How death works
+    when you die, the game is saved and you lose $1000
+    (you can choose to quit and resume the saved game later)
+    if you don't have enough money to retry, it's game over, the savegame is
+        deleted and the game resets
+
+HUD
+    Room# Keys $Money (Debug:X Y) GameTime(H:M:S)
+    
