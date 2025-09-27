@@ -8,7 +8,7 @@ class: slimedrop
     -3 -3 6 6 bg0 tmcol>
         floor? if *beep7* me unload then ;
 
-slimedrop% :: init
+slimedrop :: init
     bg.ts 7 tile bmp !
     ['] physics phys !
     -1 -1 x1 2! 2 2 w1 2!

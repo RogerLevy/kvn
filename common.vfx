@@ -12,15 +12,17 @@ debug @ [if] <enter> [else] <esc> [then] constant <subscreen>
 dummy value p1
 create start-xy 160 , 120 , 
 variable #deaths
-prop can-travel
 create item$ 17 allot&erase 
-0 0 2value gametime
 variable clock  clock on
 variable payment
 variable godmode
 variable mute
 variable #secrets
 variable can-save
+
+class: actor
+    prop can-travel <save
+class;
 
 \ Platforming
 include platformer.vfx
@@ -32,13 +34,13 @@ include platformer.vfx
 : climbable?  $ff and 240 = ;
 
 \ Global assets
-bg.png 8 8 tileset bg.ts
+bg.png 8 8 +tileset bg.ts
 bg.ts 0 tile pile !
 s" gfx\bg.dat" bg.ts load-metas 
 
 \ Inventory
 dictionary inventory
-: have ( $ - n )
+redef : have ( $ - n )
     dup c@ 0= if drop 0 exit then
     inventory lookup @ ;
 : get ( n $ - )  inventory lookup +! ;
@@ -161,12 +163,13 @@ is voice?
 
 \ Generator
 require scripts\slimedrop.vfx
+
 || variable col
 
 || : column
     swap col @ + 40 mod | c i |
     c i bg0 spot c@ case
-        31 of ( *beep15* ) c i att slimedrop% *[[ ]] endof
+        31 of ( *beep15* ) c i att slimedrop one drop endof
     endcase ;
 
 : generate
@@ -183,7 +186,7 @@ require scripts\secret.vfx
     tmh for
         tmw for
             i j bg0 spot c@ 22 = if
-                i j att secret% *[[ ]]
+                i j att secret one drop
                 0 i j bg0 spot !
             then
         loop

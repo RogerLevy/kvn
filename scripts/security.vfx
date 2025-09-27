@@ -1,7 +1,7 @@
 class: security
     actor derive
 
-security% :: init
+security :: init
     bg.ts 186 tile bmp !
     act>
         bmp off

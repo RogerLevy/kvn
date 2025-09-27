@@ -1,11 +1,11 @@
 require scripts\crumbler.vfx
 
-kvn.png 8 8 tileset kvn.ts
-kvn.ts animation walk.anm    0 5 range,
-kvn.ts animation jump.anm    24 frame,
-kvn.ts animation climb.anm   18 23 range,
-kvn.ts animation fall.anm    6 7 range,
-kvn.ts animation splat.anm   8 17 range,
+kvn.png 8 8 +tileset kvn.ts
+kvn.ts animation walk.anm    0 11 range,
+kvn.ts animation jump.anm    46 frame,
+kvn.ts animation climb.anm   34 45 range,
+kvn.ts animation fall.anm    12 13 range,
+kvn.ts animation splat.anm   14 33 range,
 
 private
 
@@ -78,7 +78,7 @@ defer physics
     floor? -exit
     f2dup ftile@ 178 = -exit
     fover f>s fdup f>s at
-    crumbler% *[[ ]] ;
+    crumbler *[[ ]] ;
 
 : fallcol
     ?plummet ?travel ?spikes ?collect
@@ -170,7 +170,7 @@ private
 is physics
 
 : movelegs
-    vx @ abs 3 / 0.1 + .75 min  a.spd !
+    vx @ abs 2 / 0.1 + .75 min  a.spd !
     a.done @ -exit *beep16* a.done off ;
 : ?walk.anm  anm @ walk.anm = ?exit  walk.anm 1. cycle  ;
 : ?idle.anm  anm @ walk.anm = if  0 a.spd !  then  ?walk.anm ;
@@ -208,7 +208,7 @@ is physics
     x 2@ y1 @ >. + h1 @ >. + 1. + xy>cr bg0 spot @ climbable? ?exit 
     fac @ walk ;
 
-kvn% :: _climb
+kvn :: _climb
     falling off  climbing on  climb.anm 0 cycle  0 vx !
     x @ dup gap >. mod - gap >. 2 / + x !
     act>
@@ -229,9 +229,9 @@ kvn% :: _climb
     <down> held? if  0 1 +tile@ climbable? if 2. y +! climb exit then then 
     <down> held? <up> held? or -exit  0 0 +tile@ climbable? -exit  climb ;
 
-: ?jump  <jump> pressed? -exit !flip jump ;
+redef : ?jump  <jump> pressed? -exit !flip jump ;
 
-kvn% :: _jump
+kvn :: _jump
     !flip  climbing off
     jump.anm 1. cycle jumppower @ negate vy !
     *beep14*
@@ -243,7 +243,7 @@ kvn% :: _jump
         then
         ?climb ;
 
-kvn% :: _walk ( n - )
+kvn :: _walk ( n - )
     climbing off
     fac !  ?walk.anm
     act>
@@ -251,12 +251,12 @@ kvn% :: _walk ( n - )
         ?walk
         walk-accel ?jump ?climb ;
 
-kvn% :: _idle
+kvn :: _idle
     climbing off
     vx @ 0= if ?idle.anm then
     act&>  to-a-stop ?walk3 ?jump ?climb ;
 
-kvn% :: _fall
+kvn :: _fall
     climbing off 
     jump.anm 1. cycle  act>  control-in-air  ?climb ;
 
@@ -264,7 +264,7 @@ kvn% :: _fall
 
 : start  ['] physics phys !  ?walk2 ;
 
-kvn% :: init
+kvn :: init
     persist
     0 n2 !
     can-travel on
@@ -276,14 +276,14 @@ kvn% :: init
 
 private
 
-: find-kvn  who> me kvn% is? ;
+: find-kvn  who> me kvn is? ;
     
 public
 
 : ?kvn ( - actor )
     find-kvn ?dup ?exit
 \    start-xy 2@ at
-    512 priority kvn% one to p1 0 priority
+    512 priority kvn one to p1 0 priority
     p1 ;
 
 : ?spawn-kvn  ?kvn drop ;

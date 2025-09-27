@@ -1,16 +1,19 @@
-require scripts\kvn.vfx
 require savegame.vfx
 
 : render  backsprites  bg  sprites  hud  ;
 : think  animate step ?travel instalment ; \ ?select ;
-: init-state  divest  0 0 to gametime ;
 
-: new
+: init-state ( - )
+    divest  
+    0 0 to gametime  
+    clear-world ;
+
+: new ( - )
     init-state  load-world
     600 warp
     240 228 at ?kvn to p1  ;
 
-: game
+: game ( - )
     can-save on
     hush
     show>
@@ -19,11 +22,13 @@ require savegame.vfx
         <t> pressed? if clock toggle then
         <m> pressed? if mute toggle then
         mute @ not 0.25 and gain
-        crt>  render  1 gamelife +!  gametime usdelta 0 d+ to gametime ;
+        crt>  
+            render  
+            +gametime ;
 
 \ Restart
 
-: restart ( - )
+redef : restart ( - )
     blank blank blank blank  new game ;
 
 : retry ( - )

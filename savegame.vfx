@@ -25,13 +25,13 @@
 ;
 || : write-actors
     actives>
-        cla @ object% = ?exit
+        \ cla @ object% = ?exit
         r# @ 0< ?exit
         s[
             me actor# . ." priority " 
             x 2@ 2.> swap . . ." at " 
             cla @ .name ."  *[[ "
-            me peeked
+            \ me peeked
             ." ]] " cr
         s] write-chunk ;
 || : write-persisters
@@ -54,7 +54,7 @@
     clear-temps
     read-chunk over >r mram swap move
     r> free drop ;
-: save
+redef : save
     fn w/o create-file throw to #1
     write-variables
     write-inventory

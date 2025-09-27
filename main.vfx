@@ -2,8 +2,7 @@
 \ KVN
 \ ------------------------------------------------------------------------------
 
-include %idir%\..\spunk\loader.vfx
+include %vfxland5%\spunk\loader.vfx
 debug @ [if]
-    include %idir%\..\spunk\tools.vfx
-    include %idir%\testing.vfx
+\    include %vfxland5%\spunk\tools.vfx
 [then]

@@ -4,32 +4,40 @@
 \ WIP
 \ ------------------------------------------------------------------------------
 
-prop hp
-prop fac
-prop falling
-prop in-air
-prop climbing
+trait: platformer
+    prop hp
+    prop fac
+    prop falling
+    prop in-air
+    prop climbing
+    static gravity
+    static terminal-vy
+    static jumppower 
+    static risepower 
+    static walkspeed
+    static inertia
 
-static gravity
-static terminal-vy
-static jumppower 
-static risepower 
-static walkspeed
-static inertia
+    :: _walk  drop ;  : walk  me _walk ;
+    :: _jump ;        : jump  in-air on  me _jump ;
+    :: _squat ;       : squat  me _squat ;
+    :: _idle ;        redef : idle  me _idle ;
+    \ :: _die ;         : die  me _die ;
+    :: _fall ;        
+    \ :: kill ;
+    :: burn ;
+    :: _climb ;       : climb me _climb ;
+    :: collide  drop ;
 
-m: _walk  drop ;  : walk  me _walk ;
-m: _jump ;        : jump  in-air on  me _jump ;
-m: _squat ;       : squat  me _squat ;
-m: _idle ;        : idle  me _idle ;
-\ m: _die ;         : die  me _die ;
-m: _fall ;        
-\ m: kill ;
-m: burn ;
-m: _climb ;       : climb me _climb ;
-m: collide  drop ;
+trait;
 
-: revive   100 hp ! idle ;
-: fall
+class: actor
+    works-with platformer
+class;
+
+: revive ( - )  
+    100 hp ! idle ;
+
+: fall ( - )
     in-air on
     falling @ not  if  falling on  me _fall  then ;
     \ ; \ in-air on falling on me _fall ;
