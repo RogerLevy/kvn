@@ -1,0 +1,88 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "kvn-world.tmj",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/dat/map/room000.dat": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 623.3333333333334,
+                "y": 370.66666666666663
+            }
+        },
+        "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/dat/map/room000.dat#dummy": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "bg.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "kvn-world.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 140.5,
+                "y": 69
+            }
+        },
+        "test/room000.dat": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 235.99999999999997,
+                "y": 129.33333333333331
+            }
+        },
+        "test/room000.dat#dummy": {
+            "dynamicWrapping": true
+        },
+        "test/room000.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 172.5,
+                "y": 122.5
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map/test2",
+    "last.externalTilesetPath": "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map",
+    "last.imagePath": "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/dat/gfx",
+    "map.height": 30,
+    "map.lastUsedExportFilter": "KVN Room Exporter (*.dat)",
+    "map.lastUsedFormat": "json",
+    "map.layerDataFormat": "3",
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 4000,
+    "openFiles": [
+        "bg.tsx",
+        "kvn-world.tmj"
+    ],
+    "project": "kvn-map.tiled-project",
+    "recentFiles": [
+        "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/dat/map/room000.dat",
+        "test/room000.tmj",
+        "test/room000.dat",
+        "bg.tsx",
+        "kvn-world.tmj"
+    ],
+    "tileset.lastUsedFilter": "Tiled tileset files (*.tsx *.xml)",
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 8,
+        "width": 8
+    }
+}
