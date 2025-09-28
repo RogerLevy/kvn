@@ -1,7 +1,16 @@
 require savegame.vfx
 
+public
+
+: controls
+    <t> pressed? if clock toggle then
+    <m> pressed? if mute toggle then
+;
+
+: muting  mute @ not 0.25 and gain ;
+
 : render  backsprites  bg  sprites  hud  ;
-: think  animate step ?travel instalment ; \ ?select ;
+: think  generate animate step ?travel instalment controls muting ;
 
 : init-state ( - )
     divest  
@@ -10,23 +19,16 @@ require savegame.vfx
 
 : new ( - )
     init-state  load-world
-    600 warp
+    0 warp
     240 228 at ?kvn to p1  ;
 
 : game ( - )
+    game/ public
     can-save on
     hush
     show>
-        generate
         think
-        <t> pressed? if clock toggle then
-        <m> pressed? if mute toggle then
-        mute @ not 0.25 and gain
-        crt>  
-            render  
-            +gametime ;
-
-\ Restart
+        crt> render ;
 
 redef : restart ( - )
     blank blank blank blank  new game ;
@@ -34,8 +36,8 @@ redef : restart ( - )
 : retry ( - )
     blank blank  20 228 at ?kvn to p1  game ;
 
-\ Kickoff
 : boot-kvn ( - )
+    \ Kickoff
     init-supershow 
     0 gamelife !
     debug @ if
@@ -44,8 +46,8 @@ redef : restart ( - )
         save-exists? if resume game else new game then
     then ;
 
-\ Automatic saving
 : ?save
+    \ Automatic saving
     debug @ ?exit
     can-save @ -exit
     p1 -> falling @ ?exit
