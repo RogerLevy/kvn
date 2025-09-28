@@ -3,7 +3,7 @@
     "commands": [
     ],
     "compatibilityVersion": 1100,
-    "extensionsPath": "extensions",
+    "extensionsPath": "ext",
     "folders": [
         "."
     ],

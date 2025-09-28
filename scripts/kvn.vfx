@@ -58,7 +58,7 @@ defer physics
 
 : ?collect
     -4 -4 8 8 bg0 tread> dup @ | t a |
-        t collectible? if t ?item cr 2dup type evaluate 0 a ! then ;
+        t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
 
 : roomcol2
     x1 2@ w1 2@ bg0 tmcol> ;

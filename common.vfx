@@ -30,7 +30,9 @@ include platformer.vfx
 \ Misc
 : gevent
     2dup >pad find not if
-        drop cr ." Global event not found: " type else execute then ;
+        drop cr ." Global event not found: " type 
+    else nip nip execute then ;
+
 : climbable?  $ff and 240 = ;
 
 \ Global assets

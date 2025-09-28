@@ -9,7 +9,7 @@ public
 
 : muting  mute @ not 0.25 and gain ;
 
-: render  backsprites  bg  sprites  hud  ;
+: render  crt>  backsprites  bg  sprites  hud ;
 : think  generate animate step ?travel instalment controls muting ;
 
 : init-state ( - )
@@ -26,9 +26,7 @@ public
     game/ public
     can-save on
     hush
-    show>
-        think
-        crt> render ;
+    show> render think ;
 
 redef : restart ( - )
     blank blank blank blank  new game ;

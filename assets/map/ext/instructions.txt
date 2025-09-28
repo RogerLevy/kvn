@@ -1,4 +1,0 @@
-To use, copy to C:/Users/roger/AppData/Local/Tiled/extensions
-
-Import: use Open dialog and select a room*.dat file and KVN Room Importer
-Export: use Export As dialog, and select KVN Room Exporter

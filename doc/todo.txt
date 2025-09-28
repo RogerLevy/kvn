@@ -1,13 +1,23 @@
+[ ] find player start positions and select (or default)
+[ ] add moving platforms
+[ ] add curved tv frame
+[ ] change world format 
+	[ ] Tiled exporter: pack tilemaps from entire world into a single file
+	[ ] get rid of scene files and use tiles instead
+
 [x] fix over-greediness of tread>
 [x] add PC speaker sounds
-[ ] lift collisions
-[ ] flamethrower hazard
-[ ] ceiling slime hazard
-[ ] ceiling spikes (improve instakill logic, like moving to a tread> statement)
-[ ] crumbling blocks (regenerating and non-regenerating)
+
+[x] dripping slime hazard
+[ ] ceiling spikes
+[-] crumbling blocks (regenerating and non-regenerating)
+	[ ] add trap-style crumbling blocks (look the same as regular ones)
 
 
-???????????????
+
 [ ] fireman poles
-[ ] secret items
-[ ] destructible blocks - pick up (regenerating) dynamite, put down & explode
+[x] secret items
+
+[ ] incendiary items and destructible blocks 
+	[ ] pick up (regenerating) dynamite or bombs, put down & explode
+	[ ] supported structures fall
