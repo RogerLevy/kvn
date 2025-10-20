@@ -1,3 +1,13 @@
+The goal of the game
+    Just make it to the goal (a house? a spaceship? a pot of gold?)
+
+Some side goals
+    Make as much money as you can
+    Speed run
+    Find all the secrets
+
+
+
 
 How death works
     when you die, the game is saved and you lose $1000

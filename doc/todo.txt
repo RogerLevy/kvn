@@ -1,9 +1,14 @@
+[ ] figure out item graphics and value
+[ ] add repl to fullscreen mode
+[ ] fix leap of faith in room 8
+[ ] change jump sound effect 
+[ ] change death sound effect
+
 [ ] find player start positions and select (or default)
 [ ] add moving platforms
 [ ] add curved tv frame
-[ ] change world format 
-	[ ] Tiled exporter: pack tilemaps from entire world into a single file
-	[ ] get rid of scene files and use tiles instead
+[x] finish up tiled workflow
+[ ] get rid of scene files and use tiles instead
 
 [x] fix over-greediness of tread>
 [x] add PC speaker sounds

@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "kvn-world.tmj",
+    "activeFile": "room-first-01.tmj",
     "expandedProjectPaths": [
     ],
     "file.lastUsedOpenFilter": "All Files (*)",
@@ -62,11 +62,11 @@
             }
         },
         "room-first-01.tmj": {
-            "scale": 0.5,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 727,
-                "y": 402
+                "x": 415,
+                "y": 146
             }
         },
         "room-giger-01.tmj": {
@@ -262,12 +262,13 @@
     "map.width": 40,
     "openFiles": [
         "bg.tsx",
-        "kvn-world.tmj"
+        "room-first-01.tmj"
     ],
     "project": "kvn-map.tiled-project",
     "recentFiles": [
-        "kvn-world-temp.tmj",
         "bg.tsx",
+        "room-first-01.tmj",
+        "kvn-world-temp.tmj",
         "room-test-02.tmj",
         "room-test-03.tmj",
         "room-test-04.tmj",
@@ -276,7 +277,6 @@
         "room-test-07.tmj",
         "room-test-08.tmj",
         "room-test-09.tmj",
-        "room-test-12.tmj",
-        "room-test-13.tmj"
+        "room-test-12.tmj"
     ]
 }

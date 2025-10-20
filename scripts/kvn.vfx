@@ -57,11 +57,11 @@ defer physics
 \     0 1 colrow 2+ gap dup 2* at  gap 2 / dup +at  crumble1 one [[ ]] ;
 
 : ?collect
-    -4 -4 8 8 bg0 tread> dup @ | t a |
+    -4 -4 8 8 playfield tread> dup @ | t a |
         t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
 
 : roomcol2
-    x1 2@ w1 2@ bg0 tmcol> ;
+    x1 2@ w1 2@ playfield tmcol> ;
 
 : splat
     floating halt splat.anm 0.25 cycle
@@ -84,7 +84,7 @@ defer physics
     ?plummet ?travel ?spikes ?collect
     vy @ n2 +!
     vx @ inertia @ p*  walkspeed @ dup negate swap clamp vx !
-    -3 -4 6 5 bg0 tmcol>
+    -3 -4 6 5 playfield tmcol>
         ?crumble
         floor? if
             n2 @ 112. < godmode @ or if stand land else splat then
@@ -113,7 +113,7 @@ variable was-hit
 : roomcol
     falling @ if vy @ n2 +! ?fall2 then
     was-hit off
-    x1 2@ w1 2@ bg0 tmcol>
+    x1 2@ w1 2@ playfield tmcol>
         was-hit on
         climbing @ not if
             ?crumble
@@ -141,7 +141,7 @@ variable was-hit
         else
             floor? if
                 x 2@ y1 @ >. + h1 @ >. +
-                    vx 2@ 2+ xy>cr bg0 spot @ climbable?
+                    vx 2@ 2+ xy>cr playfield spot @ climbable?
                         if drop 0 else 0 a.spd ! then
             then
         then ;
@@ -205,7 +205,7 @@ is physics
     vy @ 0> if fall else gap -2 / >. y +! idle then ;
 : ?hop  +tile@ climbable? if hop then ;
 : ?dismount
-    x 2@ y1 @ >. + h1 @ >. + 1. + xy>cr bg0 spot @ climbable? ?exit 
+    x 2@ y1 @ >. + h1 @ >. + 1. + xy>cr playfield spot @ climbable? ?exit 
     fac @ walk ;
 
 kvn :: _climb

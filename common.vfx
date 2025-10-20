@@ -170,7 +170,7 @@ require scripts\slimedrop.vfx
 
 || : column
     swap col @ + 40 mod | c i |
-    c i bg0 spot c@ case
+    c i playfield spot c@ case
         31 of ( *beep15* ) c i att slimedrop one drop endof
     endcase ;
 
@@ -187,9 +187,9 @@ require scripts\secret.vfx
 : create-secrets
     tmh for
         tmw for
-            i j bg0 spot c@ 22 = if
+            i j playfield spot c@ 22 = if
                 i j att secret one drop
-                0 i j bg0 spot !
+                0 i j playfield spot !
             then
         loop
     loop ;

@@ -5,7 +5,7 @@ class: slimedrop
 
 : physics
     vy @ gravity @ + terminal-vy @ min vy !
-    -3 -3 6 6 bg0 tmcol>
+    -3 -3 6 6 playfield tmcol>
         floor? if *beep7* me unload then ;
 
 slimedrop :: init
