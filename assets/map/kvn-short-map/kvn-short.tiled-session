@@ -1,0 +1,281 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "bg.tsx",
+    "expandedProjectPaths": [
+    ],
+    "file.lastUsedOpenFilter": "All Files (*)",
+    "fileStates": {
+        "": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/dat/map/room000.dat": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 623.3333333333334,
+                "y": 370.66666666666663
+            }
+        },
+        "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/dat/map/room000.dat#dummy": {
+            "dynamicWrapping": true,
+            "scaleInDock": 1
+        },
+        "bg.tsx": {
+            "dynamicWrapping": false,
+            "scaleInDock": 4,
+            "scaleInEditor": 4
+        },
+        "kvn-world-old.tmj": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1064,
+                "y": 1468
+            }
+        },
+        "kvn-world-temp.tmj": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1922,
+                "y": 708
+            }
+        },
+        "kvn-world.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2553,
+                "y": 146.66666666666663
+            }
+        },
+        "room-blank.tmj": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 0,
+                "y": 0
+            }
+        },
+        "room-first-01.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 471.16666666666663,
+                "y": 582
+            }
+        },
+        "room-giger-01.tmj": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -883,
+                "y": 46
+            }
+        },
+        "room-giger-02.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 187.25,
+                "y": 76
+            }
+        },
+        "room-giger-03.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 248.16666666666666,
+                "y": 131
+            }
+        },
+        "room-long-01.tmj": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2553,
+                "y": -90
+            }
+        },
+        "room-test-01.tmj": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 167.5,
+                "y": 267
+            }
+        },
+        "room-test-02.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 791.6666666666667,
+                "y": 254.66666666666663
+            }
+        },
+        "room-test-03.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1790.8333333333333,
+                "y": 376
+            }
+        },
+        "room-test-04.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 151.66666666666669,
+                "y": 254.66666666666663
+            }
+        },
+        "room-test-05.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 357.83333333333337,
+                "y": 232
+            }
+        },
+        "room-test-06.tmj": {
+            "scale": 0.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 213,
+                "y": 650
+            }
+        },
+        "room-test-07.tmj": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -1874.5,
+                "y": 302
+            }
+        },
+        "room-test-08.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 449.66666666666663,
+                "y": 229.33333333333334
+            }
+        },
+        "room-test-09.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -1955.25,
+                "y": 606
+            }
+        },
+        "room-test-10.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 234.33333333333331,
+                "y": 99.33333333333334
+            }
+        },
+        "room-test-11.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 143.25,
+                "y": 388
+            }
+        },
+        "room-test-12.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1755.5,
+                "y": -105.66666666666666
+            }
+        },
+        "room-test-13.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1952.8333333333333,
+                "y": -78
+            }
+        },
+        "room-test-14.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 69.66666666666669,
+                "y": 129.33333333333334
+            }
+        },
+        "room-test-15.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 145.33333333333331,
+                "y": 124.66666666666669
+            }
+        },
+        "room-test-16.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": -107.5,
+                "y": 42
+            }
+        },
+        "test/room000.dat": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 235.99999999999997,
+                "y": 129.33333333333331
+            }
+        },
+        "test/room000.dat#dummy": {
+            "dynamicWrapping": true
+        },
+        "test/room000.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 172.5,
+                "y": 122.5
+            }
+        }
+    },
+    "last.exportedFilePath": "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/dat/map",
+    "last.worldFilePath": "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map",
+    "loadedWorlds": [
+        "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map/kvn-short-map/kvn-short.world"
+    ],
+    "map.height": 30,
+    "map.lastUsedExportFilter": "KVN Room Importer (*.dat)",
+    "map.lastUsedFormat": "json",
+    "map.tileHeight": 8,
+    "map.tileWidth": 8,
+    "map.width": 40,
+    "openFiles": [
+        "bg.tsx"
+    ],
+    "project": "kvn-short.tiled-project",
+    "recentFiles": [
+        "bg.tsx",
+        "room-first-01.tmj",
+        "kvn-world-temp.tmj",
+        "room-test-02.tmj",
+        "room-test-03.tmj",
+        "room-test-04.tmj",
+        "room-test-05.tmj",
+        "room-test-06.tmj",
+        "room-test-07.tmj",
+        "room-test-08.tmj",
+        "room-test-09.tmj",
+        "room-test-12.tmj"
+    ]
+}

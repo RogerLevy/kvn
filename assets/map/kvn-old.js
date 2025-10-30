@@ -1,5 +1,5 @@
 var kvnRoom = {
-    name: "KVN Room Importer",
+    name: "KVN Room Importer/Exporter",
     extension: "dat",
     nameFilter: "Room files (*.dat)",
     fileName: "room000.dat",

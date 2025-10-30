@@ -62,11 +62,11 @@
             }
         },
         "room-first-01.tmj": {
-            "scale": 1.5,
+            "scale": 0.33,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 415,
-                "y": 146
+                "x": 1719.6969696969697,
+                "y": 418.18181818181824
             }
         },
         "room-giger-01.tmj": {
@@ -252,7 +252,7 @@
     "last.exportedFilePath": "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/dat/map",
     "last.worldFilePath": "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map",
     "loadedWorlds": [
-        "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map/kvn.world"
+        "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map/long-map/kvn-long.world"
     ],
     "map.height": 30,
     "map.lastUsedExportFilter": "KVN Room Importer (*.dat)",
@@ -264,7 +264,7 @@
         "bg.tsx",
         "room-first-01.tmj"
     ],
-    "project": "kvn-map.tiled-project",
+    "project": "kvn-long.tiled-project",
     "recentFiles": [
         "bg.tsx",
         "room-first-01.tmj",

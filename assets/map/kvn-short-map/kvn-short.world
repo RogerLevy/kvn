@@ -1,0 +1,146 @@
+{
+    "maps": [
+        {
+            "fileName": "room-first-01.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 1280,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-01.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 1600,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-02.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 1920,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-03.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 2240,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-04.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 2560,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-05.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 2880,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-06.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 3200,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-07.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 3520,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-08.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 3840,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-09.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 4160,
+            "y": 240
+        },
+        {
+            "fileName": "room-test-10.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 1280,
+            "y": 480
+        },
+        {
+            "fileName": "room-test-11.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 1600,
+            "y": 480
+        },
+        {
+            "fileName": "room-test-12.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 1920,
+            "y": 480
+        },
+        {
+            "fileName": "room-test-13.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 2240,
+            "y": 480
+        },
+        {
+            "fileName": "room-test-14.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 2560,
+            "y": 480
+        },
+        {
+            "fileName": "room-giger-01.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 2880,
+            "y": 480
+        },
+        {
+            "fileName": "room-giger-02.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 3200,
+            "y": 480
+        },
+        {
+            "fileName": "room-giger-03.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 3520,
+            "y": 480
+        },
+        {
+            "fileName": "room-long-01.tmj",
+            "height": 240,
+            "width": 3200,
+            "x": 1280,
+            "y": 720
+        },
+        {
+            "fileName": "room-test-16.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 3840,
+            "y": 480
+        }
+    ],
+    "onlyShowAdjacentMaps": false,
+    "type": "world"
+}
