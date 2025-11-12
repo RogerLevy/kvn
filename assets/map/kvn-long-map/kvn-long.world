@@ -139,6 +139,20 @@
             "width": 320,
             "x": 3840,
             "y": 720
+        },
+        {
+            "fileName": "room-test-08-2.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 3840,
+            "y": 480
+        },
+        {
+            "fileName": "room-end.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 3840,
+            "y": 480
         }
     ],
     "onlyShowAdjacentMaps": false,

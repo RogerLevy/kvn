@@ -70,36 +70,44 @@
                 "y": 0
             }
         },
-        "room-first-01.tmj": {
-            "scale": 2,
+        "room-end.tmj": {
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2762.75,
-                "y": 289
+                "x": -1828.8333333333333,
+                "y": 65.66666666666667
+            }
+        },
+        "room-first-01.tmj": {
+            "scale": 3,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2390.1666666666665,
+                "y": 208.33333333333331
             }
         },
         "room-giger-01.tmj": {
-            "scale": 0.5,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -883,
-                "y": 46
+                "x": 526.5,
+                "y": 138
             }
         },
         "room-giger-02.tmj": {
-            "scale": 2,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 187.25,
-                "y": 76
+                "x": 975.8333333333333,
+                "y": 133.66666666666663
             }
         },
         "room-giger-03.tmj": {
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 447.25,
-                "y": 157
+                "x": -9.25,
+                "y": 241
             }
         },
         "room-long-01.tmj": {
@@ -123,15 +131,15 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 791.6666666666667,
-                "y": 254.66666666666663
+                "y": 254.66666666666669
             }
         },
         "room-test-03.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1790.8333333333333,
-                "y": 376
+                "x": 1184.1666666666665,
+                "y": 238
             }
         },
         "room-test-04.tmj": {
@@ -139,7 +147,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 151.66666666666669,
-                "y": 254.66666666666663
+                "y": 254.66666666666669
             }
         },
         "room-test-05.tmj": {
@@ -151,19 +159,19 @@
             }
         },
         "room-test-06.tmj": {
-            "scale": 0.5,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 213,
-                "y": 650
+                "x": -64.33333333333331,
+                "y": 495.3333333333333
             }
         },
         "room-test-07.tmj": {
-            "scale": 1,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -1874.5,
-                "y": 302
+                "x": 363.16666666666663,
+                "y": 417.66666666666663
             }
         },
         "room-test-08-2.tmj": {
@@ -175,11 +183,11 @@
             }
         },
         "room-test-08.tmj": {
-            "scale": 0.33,
+            "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -1816.6666666666667,
-                "y": 706.0606060606061
+                "x": 369.25,
+                "y": 236
             }
         },
         "room-test-09.tmj": {
@@ -210,24 +218,24 @@
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1755.5,
-                "y": -105.66666666666666
+                "x": 381.5,
+                "y": 43.66666666666667
             }
         },
         "room-test-13.tmj": {
-            "scale": 3,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1952.8333333333333,
-                "y": -78
+                "x": 501.9999999999999,
+                "y": 416
             }
         },
         "room-test-14.tmj": {
-            "scale": 1.5,
+            "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 69.66666666666669,
-                "y": 129.33333333333334
+                "x": 570.25,
+                "y": 235.5
             }
         },
         "room-test-15.tmj": {
@@ -283,16 +291,16 @@
     "project": "kvn-long.tiled-project",
     "recentFiles": [
         "room-first-01.tmj",
+        "room-test-08.tmj",
+        "room-end.tmj",
+        "room-giger-03.tmj",
+        "room-test-13.tmj",
+        "room-test-14.tmj",
+        "room-giger-01.tmj",
+        "room-giger-02.tmj",
         "room-test-16.tmj",
         "kvn-world-old.tmj",
         "kvn-world-30.tmj",
-        "bg.tsx",
-        "kvn-world-temp.tmj",
-        "room-test-02.tmj",
-        "room-test-03.tmj",
-        "room-test-04.tmj",
-        "room-test-05.tmj",
-        "room-test-06.tmj",
-        "room-test-07.tmj"
+        "bg.tsx"
     ]
 }
