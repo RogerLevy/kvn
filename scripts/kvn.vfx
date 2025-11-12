@@ -78,7 +78,7 @@ defer physics
     floor? -exit
     f2dup ftile@ 178 = -exit
     fover f>s fdup f>s at
-    crumbler *[[ ]] ;
+    crumbler one [[ ]] ;
 
 : fallcol
     ?plummet ?travel ?spikes ?collect
