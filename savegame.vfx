@@ -30,7 +30,7 @@
         s[
             me actor# . ." priority " 
             x 2@ 2.> swap . . ." at " 
-            cla @ .name ."  *[[ "
+            cla @ .name ."  one [[ "
             \ me peeked
             ." ]] " cr
         s] write-chunk ;
@@ -42,7 +42,7 @@
     mram  /screen #rooms *  write-chunk
     #rooms for
         i room takeout
-        s[ i . ." room clear " cr s] write-chunk
+        s[ i . ." room just " cr s] write-chunk
         write-actors
         s[ ." stow" cr s] write-chunk
         stow
