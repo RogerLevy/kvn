@@ -71,27 +71,27 @@
             }
         },
         "room-end.tmj": {
-            "scale": 3,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -1828.8333333333333,
-                "y": 65.66666666666667
+                "x": 184.5,
+                "y": 309
             }
         },
         "room-first-01.tmj": {
-            "scale": 3,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2390.1666666666665,
-                "y": 208.33333333333331
+                "x": 2744.5,
+                "y": 549
             }
         },
         "room-giger-01.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 526.5,
-                "y": 138
+                "x": 420.5,
+                "y": 74.66666666666667
             }
         },
         "room-giger-02.tmj": {
