@@ -165,7 +165,7 @@ class: kvn
 private
 
 :noname
-    in-air @ if vy @ gravity @ + terminal-vy @ min vy ! ." 1" else ." 0" then
+    in-air @ if vy @ gravity @ + terminal-vy @ min vy ! then
     roomcol
     was-hit @ not climbing @ not and if
         vy @ 0 > falling @ not and if fall exit then
@@ -273,23 +273,11 @@ kvn :: init
     0 n2 !
     can-travel on
     100 hp !
-    -3 -3 x1 2!  6 7 w1 2!
-    right fac !  start ;
+    -4 -3 x1 2!  8 7 w1 2!
+    right fac !  
+    walk.anm 0. cycle
+    start ;
 
 \ ------------------------------------------------------------------------------
-
-private
-
-: find-kvn  who> me kvn is? ;
-    
-public
-
-: ?kvn ( - actor )
-    find-kvn ?dup ?exit
-\    start-xy 2@ at
-    512 priority kvn one to p1 0 priority
-    p1 ;
-
-: ?spawn-kvn  ?kvn drop ;
 
 class;

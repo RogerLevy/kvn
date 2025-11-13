@@ -10,7 +10,6 @@
 <q> constant <use>
 debug @ [if] <enter> [else] <esc> [then] constant <subscreen>
 dummy value p1
-create start-xy 160 , 120 , 
 variable #deaths
 create item$ 17 allot&erase 
 variable clock  clock on
@@ -20,7 +19,7 @@ variable mute
 variable #secrets
 variable can-save
 
-class: actor
+class: %actor
     prop can-travel <save
 class;
 
@@ -87,10 +86,11 @@ redef : have ( $ - n )
     end-case ;
 
 \ Movement between rooms
-: !startxy  x 2@ 2.> start-xy 2! ;
+
 : travel ( x. y. n - )
-    +warp x 2! !startxy
+    +warp x 2! 
     blank s" game" gevent ;
+
 : ?travel
     can-travel @ -exit
     p1 as>
@@ -164,7 +164,7 @@ is voice?
 3 beep17.ogg importance [] ! \ secret
 
 \ Generator
-require scripts\slimedrop.vfx
+c: slimedrop ;
 
 || variable col
 
@@ -181,17 +181,43 @@ require scripts\slimedrop.vfx
         40 0 do i j column 5 +loop
     loop ;
 
-\ Create secrets
-require scripts\secret.vfx
+\ Convert special tiles to actors
+c: secret ;
+c: %start ;
+c: lift1 ;
 
-: create-secrets
+256 cell array tile-classes
+secret 22 tile-classes [] !
+%start 130 tile-classes [] !
+lift1 166 tile-classes [] !
+
+: spawn-tile-objects
     tmh for
         tmw for
-            i j playfield spot c@ 22 = if
-                i j att secret one drop
+            i j playfield spot c@ 
+            tile-classes [] @ ?dup if
+                i j att ( class ) one drop 
                 0 i j playfield spot !
             then
         loop
     loop ;
 
-load-room-chain link ' create-secrets ,
+load-room-chain link ' spawn-tile-objects ,
+
+\ Spawn KVN
+c: kvn ;
+: find-kvn  who> me kvn is? ;
+
+c: %start ;
+: find-start  who> me %start is? ;
+
+: ?kvn ( - actor )
+    find-start ?dup if 0 0 from then 
+    find-kvn ?dup if
+        at@ 2>p p1 -> x 2!
+        p1 init
+    else
+        512 priority kvn one to p1 
+        0 priority
+        p1 
+    then ;

@@ -31,7 +31,7 @@ trait: platformer
 
 trait;
 
-class: actor
+class: %actor
     works-with platformer
 class;
 

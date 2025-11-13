@@ -4,7 +4,7 @@
 private
 
 : movie
-    just blank 
+     blank 
     3.0 timer>
         s" restart" gevent 
 ;

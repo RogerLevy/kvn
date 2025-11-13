@@ -20,7 +20,7 @@ public
 : new ( - )
     init-state  load-world
     0 warp
-    240 228 at ?kvn to p1  ;
+    ?kvn to p1  ;
 
 : game ( - )
     game/ public
@@ -32,7 +32,7 @@ redef : restart ( - )
     blank blank blank blank  new game ;
 
 : retry ( - )
-    blank blank  20 228 at ?kvn to p1  game ;
+    blank blank  ?kvn to p1  game ;
 
 : boot-kvn ( - )
     \ Kickoff

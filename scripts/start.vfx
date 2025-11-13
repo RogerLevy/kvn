@@ -1,0 +1,6 @@
+class: %start
+    %actor derive
+class;
+
+%start :: init ( - )
+    0 bmp ! ;

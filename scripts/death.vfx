@@ -21,7 +21,7 @@ defer paying
 
 \ Movie
 : movie
-    just blank 
+    blank 
     1.5 timer>
         ['] paying2 is paying
 \    1.0 timer>

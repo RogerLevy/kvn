@@ -1,5 +1,5 @@
 : stock  999 c" key" get  999 c" ring" get  1000000 earn ;
 
-new game
+new game stock
 
 p1 -> x 2@   16. 0. 2+  2>i at  lift1 one constant lift0
