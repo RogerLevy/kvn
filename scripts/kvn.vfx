@@ -40,12 +40,6 @@ defer physics
 : bottom  y @ y1 @ >. + h1 @ >. + ;
 : stand   bottom vy @ + gap >. umod 1. + negate y +!  0 vy ! ;
 
-: land
-    sfx @ beep13.ogg = if 0 sfx ! then
-    *beep12*
-    ['] physics phys !  0 n2 ! 
-    falling off  in-air off  ?walk2  ?stick ;
-
 : ?plummet
     y @ vy @ + 240. 480. within if
         halt phys off r> drop
@@ -112,7 +106,7 @@ defer physics
 variable was-hit
 : roomcol
     falling @ if vy @ n2 +! ?fall2 then
-    was-hit off
+    in-air @ if was-hit off then
     x1 2@ w1 2@ playfield tmcol>
         was-hit on
         climbing @ not if
@@ -158,10 +152,20 @@ class: kvn
     .75 walkspeed !
     0.98 inertia !
 
+    :: _land ( - )
+        in-air @ -exit
+        in-air off
+        0 vy !
+        was-hit on
+        sfx @ beep13.ogg = if 0 sfx ! then
+        *beep12*
+        ['] physics phys !  0 n2 ! 
+        falling off  in-air off  ?walk2  ?stick ;
+
 private
 
 :noname
-    climbing @ not if vy @ gravity @ + terminal-vy @ min vy ! then
+    in-air @ if vy @ gravity @ + terminal-vy @ min vy ! ." 1" else ." 0" then
     roomcol
     was-hit @ not climbing @ not and if
         vy @ 0 > falling @ not and if fall exit then

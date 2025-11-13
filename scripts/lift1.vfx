@@ -1,16 +1,22 @@
-class: lift1
-    actor derive
+require %idir%/platform.vfx
 
-: physics
-    me p1 hit? -exit
-    y @ p1 -> y @ <= -exit
-    y @ y1 @ >. + p1 [[ h1 @ >. - y1 @ >. - y ! ]] ;
+class: lift1
+    %platform derive
+class;
+
+\ : physics
+\     me p1 hit? -exit
+\     y @ p1 -> y @ <= -exit
+\     y @ y1 @ >p + p1 { h1 @ >p - y1 @ >p - y ! } ;
+
+: wraparound  y @ -8. < if 248. y ! then ;
 
 lift1 :: init
     lift.png bmp !
-    \ -1. vy !
-    ['] physics phys !
     -4 -2 x1 2! 8 4 w1 2!
-    act> y @ -8. <= -exit 248. y ! ;
+    BIT_FLR flags !
+    ['] platform-physics phys !
+    \ -1. vy !
+    act> 
+        wraparound ;
 
-class;

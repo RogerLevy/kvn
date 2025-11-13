@@ -27,6 +27,7 @@ trait: platformer
     :: burn ;
     :: _climb ;       : climb me _climb ;
     :: collide  drop ;
+    :: _land ;  : land  me _land ;
 
 trait;
 

@@ -140,7 +140,7 @@ variable sfx
 256 cell array importance
 :noname ( smp - f )
     sfx @ over sfx @ <> and if
-        sfx @ importance [] @ ` over importance [] @ > if
+        sfx @ importance [] @` over importance [] @ > if
             sfx @ playing? if
                 drop 0 exit 
             then
