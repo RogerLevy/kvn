@@ -221,3 +221,6 @@ c: %start ;
         0 priority
         p1 
     then ;
+
+: options-key-pressed?
+    <esc> pressed? debug @ if shift? and then ;

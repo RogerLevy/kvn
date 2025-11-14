@@ -2,15 +2,18 @@ require savegame.vfx
 
 public
 
-: controls
+: control
     <t> pressed? if clock toggle then
     <m> pressed? if mute toggle then
+    options-key-pressed?
+        if s" options" gevent then
 ;
 
 : muting  mute @ not 0.25 and gain ;
 
 : render  crt>  backsprites  bg  sprites  hud ;
-: think  generate animate step ?travel instalment controls muting ;
+
+: think  generate animate step ?travel instalment control muting ;
 
 : init-state ( - )
     divest  

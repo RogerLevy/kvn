@@ -62,6 +62,14 @@
                 "y": 146.66666666666663
             }
         },
+        "menu.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 186.75,
+                "y": 115
+            }
+        },
         "room-blank.tmj": {
             "scale": 1,
             "selectedLayer": 0,
@@ -79,11 +87,11 @@
             }
         },
         "room-first-01.tmj": {
-            "scale": 3,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1012.4999999999999,
-                "y": 186.33333333333334
+                "x": 2965.6666666666665,
+                "y": 305.99999999999994
             }
         },
         "room-giger-01.tmj": {
@@ -91,7 +99,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 420.5,
-                "y": 74.66666666666667
+                "y": 74.66666666666666
             }
         },
         "room-giger-02.tmj": {
@@ -99,7 +107,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 975.8333333333333,
-                "y": 133.66666666666663
+                "y": 133.66666666666666
             }
         },
         "room-giger-03.tmj": {
@@ -130,7 +138,7 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 791.6666666666667,
+                "x": 791.6666666666666,
                 "y": 254.66666666666669
             }
         },
@@ -146,7 +154,7 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 151.66666666666669,
+                "x": 151.66666666666663,
                 "y": 254.66666666666669
             }
         },
@@ -154,7 +162,7 @@
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 357.83333333333337,
+                "x": 357.8333333333333,
                 "y": 232
             }
         },
@@ -162,7 +170,7 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -64.33333333333331,
+                "x": -64.33333333333337,
                 "y": 495.3333333333333
             }
         },
@@ -203,7 +211,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 234.33333333333331,
-                "y": 99.33333333333334
+                "y": 99.33333333333331
             }
         },
         "room-test-11.tmj": {
@@ -219,14 +227,14 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 381.5,
-                "y": 43.66666666666667
+                "y": 43.66666666666666
             }
         },
         "room-test-13.tmj": {
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 501.9999999999999,
+                "x": 501.99999999999994,
                 "y": 416
             }
         },
@@ -250,8 +258,8 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 305.9999999999999,
-                "y": 357.33333333333337
+                "x": 305.99999999999994,
+                "y": 357.3333333333333
             }
         },
         "test/room000.dat": {
@@ -279,12 +287,12 @@
     "loadedWorlds": [
         "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map/kvn-long-map/kvn-long.world"
     ],
-    "map.height": 30,
+    "map.height": 20,
     "map.lastUsedExportFilter": "KVN Room Importer (*.dat)",
     "map.lastUsedFormat": "json",
     "map.tileHeight": 8,
     "map.tileWidth": 8,
-    "map.width": 40,
+    "map.width": 20,
     "openFiles": [
         "room-first-01.tmj"
     ],

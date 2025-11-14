@@ -1,0 +1,38 @@
+2 constant #options
+variable option#
+
+private 
+
+: chars  8 * ;
+: option-ofsy  option# @ 4 * chars ;
+: menu 
+    \ draw the menu
+    0 0 at 19 screen lay
+    \ draw the cursor
+    12 chars ( x ) 10 chars option-ofsy + ( y ) at
+    bg.ts 16 tile put   
+;
+
+: +option ( n - )
+    option# @ + #options umod option# ! ;
+
+: control
+    <up> pressed? if -1 +option then
+    <down> pressed? if 1 +option then
+    <enter> pressed? alt? not and if
+        option# @ 0 = if debug @ not if bye then then
+        option# @ 1 = if s" restart" gevent then
+    then 
+    options-key-pressed? if s" game" gevent then
+;
+
+public
+
+: options
+    options>>
+    0 option# !
+    show>
+        control
+        crt>
+            backsprites  bg  sprites  hud
+            menu ;
