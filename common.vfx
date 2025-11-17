@@ -23,8 +23,6 @@ class: %actor
     prop can-travel <save
 class;
 
-\ Platforming
-include platformer.vfx
 
 \ Misc
 : gevent
@@ -33,6 +31,9 @@ include platformer.vfx
     else nip nip execute then ;
 
 : climbable?  $ff and 240 = ;
+
+\ Platforming behavior
+require platformer.vfx
 
 \ Global assets
 bg.png 8 8 +tileset bg.ts
@@ -150,18 +151,18 @@ variable sfx
 is voice?
 
 \ Sample priorities
-2 beep5.ogg importance [] ! \ key
-1 beep2.ogg importance [] ! \ collectible
-9 beep3.ogg importance [] ! \ game over 
-9 beep18.ogg importance [] ! \ death
-1 beep8.ogg importance [] ! \ drop
-9 beep9.ogg importance [] ! \ baby
-3 beep10.ogg importance [] ! \ splat
-2 beep11.ogg importance [] ! \ door
-2 beep13.ogg importance [] ! \ fall
-1 beep14.ogg importance [] ! \ jump
-1 beep15.ogg importance [] ! \ drip
-3 beep17.ogg importance [] ! \ secret
+2 beep5.wav importance [] ! \ key
+1 beep2.wav importance [] ! \ collectible
+9 beep3.wav importance [] ! \ game over 
+9 beep18.wav importance [] ! \ death
+1 beep8.wav importance [] ! \ drop
+9 beep9.wav importance [] ! \ baby
+3 beep10.wav importance [] ! \ splat
+2 beep11.wav importance [] ! \ door
+2 beep13.wav importance [] ! \ fall
+1 beep14.wav importance [] ! \ jump
+1 beep15.wav importance [] ! \ drip
+3 beep17.wav importance [] ! \ secret
 
 \ Generator
 c: slimedrop ;

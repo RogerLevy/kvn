@@ -146,6 +146,13 @@
             "width": 320,
             "x": 3840,
             "y": 480
+        },
+        {
+            "fileName": "menu.tmj",
+            "height": 240,
+            "width": 320,
+            "x": 4160,
+            "y": 480
         }
     ],
     "onlyShowAdjacentMaps": false,

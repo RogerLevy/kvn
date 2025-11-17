@@ -73,7 +73,7 @@ class;
     vx @ p1 -> x +!
 
     \ Set player as standing on ground
-    p1 _land ;
+    p1 ->land ;
 
 \ ------------------------------------------------------------------------------
 \ Crush Detection

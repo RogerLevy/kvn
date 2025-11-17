@@ -7,277 +7,39 @@ kvn.ts animation climb.anm   34 45 range,
 kvn.ts animation fall.anm    12 13 range,
 kvn.ts animation splat.anm   14 33 range,
 
-private
-
-\ ------------------------------------------------------------------------------
-\ more general stuff
-
-defer physics
-
-: !flip  0 fac @ left = if h| then a.flp ! ;
-: control-in-air
-    <left> held? if  -0.08 vx +!  then
-    <right> held? if  0.08 vx +!  then
-    vx @ inertia @ p*  walkspeed @ dup negate swap clamp vx !
-    vx @ 0< if left fac ! !flip then
-    vx @ 0> if right fac ! !flip then ;
-: ?jump  <jump> pressed? -exit jump ;
-
-: ?walk
-    <left> pressed? if left walk exit then
-    <right> pressed? if right walk exit then ;
-: ?walk2
-    <left> held? if left walk exit then
-    <right> held? if right walk exit then
-    idle ;
-: ?walk3
-    <left> held? if left walk exit then
-    <right> held? if right walk exit then ;
-
-: ?dirkey  fac @ left = if <left> else <right> then ;
-: ?stick  ?dirkey held? not if vx 2@ .666 dup 2p* vx 2! then ;
-
-: bottom  y @ y1 @ >. + h1 @ >. + ;
-: stand   bottom vy @ + gap >. umod 1. + negate y +!  0 vy ! ;
-
-: ?plummet
-    y @ vy @ + 240. 480. within if
-        halt phys off r> drop
-        s" death" gevent 
-    then ;
-    
-\ : ?crumble
-\     0 1 +tile@ trap? -exit
-\     0 1 colrow 2+ gap dup 2* at  gap 2 / dup +at  crumble1 one [[ ]] ;
-
-: ?collect
-    -4 -4 8 8 playfield tread> dup @ | t a |
-        t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
-
-: roomcol2
-    x1 2@ w1 2@ playfield tmcol> ;
-
-: splat
-    floating halt splat.anm 0.25 cycle
-    *beep10*
-    act> a.done @ -exit anm off
-    act> 1.0 passed? -exit s" death" gevent ;
-
-: ?spikes
-    hp @ -exit vy @ 0> -exit
-    0 0 +tile@ instakill? -exit
-    s" death" gevent ;
-
-: ?crumble
-    floor? -exit
-    f2dup ftile@ 178 = -exit
-    fover f>s fdup f>s at
-    crumbler one [[ ]] ;
-
-: fallcol
-    ?plummet ?travel ?spikes ?collect
-    vy @ n2 +!
-    vx @ inertia @ p*  walkspeed @ dup negate swap clamp vx !
-    -3 -4 6 5 playfield tmcol>
-        ?crumble
-        floor? if
-            n2 @ 112. < godmode @ or if stand land else splat then
-        then ;
-        
-: ?fall2
-    n2 @ 68. >= -exit
-    ['] fallcol phys !
-    fall.anm 0.25 cycle
-    *beep13*
-    act> ;
-
-: ?door 
-    f2dup ftile@ 8 =
-    c" key" have and if
-        *beep11*
-        0 f2dup ftile! 1 c" key" discard exit 
-    then
-    f2dup ftile@ 10 =
-    c" ring" have and if
-        *beep11*
-        0 f2dup ftile! 1 c" ring" discard exit 
-    then ;
-
-variable was-hit
-: roomcol
-    falling @ if vy @ n2 +! ?fall2 then
-    in-air @ if was-hit off then
-    x1 2@ w1 2@ playfield tmcol>
-        was-hit on
-        climbing @ not if
-            ?crumble
-            floor? if
-                f2dup gap s>f f- ftile@ climbable?
-                f2dup ftile@ climbable? and if
-                    drop false
-                then
-            then
-            in-air @ if
-                floor? if
-                    0 n2 !  land exit
-                then
-            else
-\                floor? if ?crumble then
-                lwall? if
-                    <right> held? not if idle then
-                    <left> held? if ?door then
-                then
-                rwall? if
-                    <left> held? not if idle then
-                    <right> held? if ?door then
-                then
-            then
-        else
-            floor? if
-                x 2@ y1 @ >. + h1 @ >. +
-                    vx 2@ 2+ xy>cr playfield spot @ climbable?
-                        if drop 0 else 0 a.spd ! then
-            then
-        then ;
-
-        
-\ ------------------------------------------------------------------------------
-
 class: kvn
-    actor derive
-    0.12 gravity !
+    %actor derive
+    is-a %platformer
+
+    -4 -3 8 7 solidity-hitbox!
+
+    .12 gravity !
     1.5 terminal-vy !
-    1.55 jumppower !
-    0.09 risepower !
-    .75 walkspeed !
-    0.98 inertia !
+    1.55 jump-power !
+    .09 rise-power !
+    .75 walk-speed !
+    .75 terminal-vx !
+    .08 air-control !
+class;
 
-    :: _land ( - )
-        in-air @ -exit
-        in-air off
-        0 vy !
-        was-hit on
-        sfx @ beep13.ogg = if 0 sfx ! then
-        *beep12*
-        ['] physics phys !  0 n2 ! 
-        falling off  in-air off  ?walk2  ?stick ;
-
-private
-
-:noname
-    in-air @ if vy @ gravity @ + terminal-vy @ min vy ! then
-    roomcol
-    was-hit @ not climbing @ not and if
-        vy @ 0 > falling @ not and if fall exit then
-    then
-    !flip  ?plummet ?travel ?spikes ?collect ;
-is physics
-
-: movelegs
-    vx @ abs 2 / 0.1 + .75 min  a.spd !
-    a.done @ -exit *beep16* a.done off ;
-: ?walk.anm  anm @ walk.anm = ?exit  walk.anm 1. cycle  ;
+\ Animation
+: ?footstep  a.done @ -exit *beep16* a.done off ;
+: movelegs  vx @ abs 2 / 0.1 + .75 min a.spd ! ?footstep ;
+: ?walk.anm  anm @ walk.anm = ?exit  walk.anm 0 cycle ;
 : ?idle.anm  anm @ walk.anm = if  0 a.spd !  then  ?walk.anm ;
 
-: to-a-stop
-    vx @ .825 p* vx !
-    vx @ abs .15 <
-    if   0 vx !  0 a.spd ! 
-    else ?walk.anm movelegs then ;
+\ Physics phase
+: kvn-physics  platformer-physics ; \ ?plummet ?travel ?spikes ?collect ;
 
-: walk-accel
-    fac @ left = if
-        vx @ -.08 + walkSpeed @ negate max vx !  
-    else
-        vx @ .08 + walkSpeed @ min vx !
-    then
-    movelegs ;
+\ Sound
+: land-sound  sfx @ beep13.wav = if 0 sfx ! then *beep12* ;
 
-: ?-  vx @ 0< if negate then ;
-: hop
-    climbing off
-    x @ gap >. ?- + n1 ! 2. ?- 0 vx 2!
-    floating
-    act>
-        vx @ 0< if x @ n1 @ <= -exit
-                else x @ n1 @ >= -exit then
-        n1 @ x !
-        ['] physics phys !  climb ;
-
-: ?unclimb
-    0 0 +tile@ climbable? ?exit
-    vy @ 0> if fall else gap -2 / >. y +! idle then ;
-: ?hop  +tile@ climbable? if hop then ;
-: ?dismount
-    x 2@ y1 @ >. + h1 @ >. + 1. + xy>cr playfield spot @ climbable? ?exit 
-    fac @ walk ;
-
-kvn :: _climb
-    falling off  climbing on  climb.anm 0 cycle  0 vx !
-    x @ dup gap >. mod - gap >. 2 / + x !
-    act>
-        <up> held? <down> held? or if 1. 3 / else 0 then a.spd !
-        <up> held? if -.5 else
-            <down> held? if .5 else
-                0 then then vy !
-        <left> held? if left fac ! ?dismount then 
-        <right> held? if right fac ! ?dismount then
-        ?unclimb
-        \ <jump> pressed? if
-        \     <left> held? if -1. vx ! -1 0 ?hop exit then
-        \     <right> held? if 1. vx ! 1 0 ?hop exit then
-        \ then ;
-;
-
-: ?climb
-    <down> held? if  0 1 +tile@ climbable? if 2. y +! climb exit then then 
-    <down> held? <up> held? or -exit  0 0 +tile@ climbable? -exit  climb ;
-
-redef : ?jump  <jump> pressed? -exit !flip jump ;
-
-kvn :: _jump
-    !flip  climbing off
-    jump.anm 1. cycle jumppower @ negate vy !
-    *beep14*
-    act>  
-        vy @ 0<  <jump> held? and if 
-            vy @ risepower @ negate + vy !  control-in-air
-        else
-            fall
-        then
-        ?climb ;
-
-kvn :: _walk ( n - )
-    climbing off
-    fac !  ?walk.anm
-    act>
-        ?dirkey letgo? if idle exit then
-        ?walk
-        walk-accel ?jump ?climb ;
-
-kvn :: _idle
-    climbing off
-    vx @ 0= if ?idle.anm then
-    act&>  to-a-stop ?walk3 ?jump ?climb ;
-
-kvn :: _fall
-    climbing off 
-    jump.anm 1. cycle  act>  control-in-air  ?climb ;
-
-\ ------------------------------------------------------------------------------
-
-: start  ['] physics phys !  ?walk2 ;
-
-kvn :: init
-    persist
-    0 n2 !
-    can-travel on
-    100 hp !
-    -4 -3 x1 2!  8 7 w1 2!
-    right fac !  
-    walk.anm 0. cycle
-    start ;
-
-\ ------------------------------------------------------------------------------
-
+\ Logic
+class: kvn
+:: ->jump  platformer:->jump jump.anm 1. cycle *beep14* ;
+:: ->walk  platformer:->walk +act> movelegs ;
+:: ->idle  platformer:->idle +act> movelegs ;
+:: ->fall  platformer:->fall jump.anm 1. cycle ;
+:: ->land  platformer:->land land-sound ;
+:: init  playable /platformer ?idle.anm ;
 class;

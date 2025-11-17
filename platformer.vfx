@@ -1,44 +1,157 @@
 \ ------------------------------------------------------------------------------
 \ Platformer System
 \
-\ WIP
+\ This is a work-in-progress.
+\ 
+\ Note that the logic reads player input.
+\ The intent is for input to be disabled or simulated from the outside
+\ if the platformer actor is to be non-player-controlled. 
 \ ------------------------------------------------------------------------------
 
-trait: platformer
-    prop hp
-    prop fac
-    prop falling
-    prop in-air
-    prop climbing
-    static gravity
-    static terminal-vy
-    static jumppower 
-    static risepower 
-    static walkspeed
-    static inertia
+class: %actor
+    prop hp :int <save
+    prop fac :int <save
+    static max-hp :int
 
-    :: _walk  drop ;  : walk  me _walk ;
-    :: _jump ;        : jump  in-air on  me _jump ;
-    :: _squat ;       : squat  me _squat ;
-    :: _idle ;        redef : idle  me _idle ;
-    \ :: _die ;         : die  me _die ;
-    :: _fall ;        
-    \ :: kill ;
-    :: burn ;
-    :: _climb ;       : climb me _climb ;
-    :: collide  drop ;
-    :: _land ;  : land  me _land ;
+    template {
+        right fac !
+    }
+    %actor {
+        100 max-hp !
+    }
+class;
+
+trait: %platformer
+    prop climbing <save
+    prop on-ground 
+    prop falling
+
+    prop gravity :fixed
+    prop terminal-vx :fixed
+    prop terminal-vy :fixed
+    prop jump-power :fixed
+    prop rise-power :fixed
+    prop walk-speed :fixed
+    prop air-control :fixed
+
+
+    :: kill me unload ;     : die       me kill ;
+    :: ->turn ( dir - ) fac ! ;    : turn ( dir - )  me ->turn ;
+    :: ->walk ;             : walk      me ->walk ;
+    :: ->jump ;             : jump      me ->jump ;
+    :: ->squat ;            : squat     me ->squat ;
+    redef :: ->idle ;       : idle      me ->idle ;
+    :: ->fall ;             : fall      me ->fall ;        
+    :: ->climb ;            : climb     me ->climb ;
+    :: ->land ;             : land      me ->land ;
+
+    :: ->hit ;              : hit       me ->hit ;
 
 trait;
 
-class: %actor
-    works-with platformer
-class;
+: !flip  0 fac @ left = if h| then a.flp ! ;
+: bottom ( - y. ) y @ y1 @ >p + h1 @ >p + ;
+: dampen ( fx. fy. - ) vx 2@ 2p* vx 2! ;
+: clamp-vx ( vx. - ) vx @ swap dup negate swap clamp vx ! ;
 
-: revive ( - )  
-    100 hp ! idle ;
+: ?jump  <jump> pressed? if jump then ;
+: ?walk  <left> held? if left turn walk then  <right> held? if right turn walk then ;
+: ?idle  <left> held? <right> held? or not if idle then ;
+: ?dirkey  fac @ left = if <left> else <right> then ;
+: ?stop  ?dirkey letgo? if idle then ;
+: ?stick  ?dirkey held? not if .666 dup accel then ;
+: stand  bottom vy @ + gap >p umod 1. + negate y +!  0 vy ! ;
+: ?climb  
+    <down> held? if 0 1 +tile@ climbable? if 2. y +! climb exit then then 
+    <down> held? <up> held? or if 0 0 +tile@ climbable? if climb then then ;
 
-: fall ( - )
-    in-air on
-    falling @ not  if  falling on  me _fall  then ;
-    \ ; \ in-air on falling on me _fall ;
+
+: control-in-air ( - )
+    <left> held? if  air-control @ negate vx +!  then
+    <right> held? if  air-control @ vx +!  then
+    .98 1. dampen 
+    walk-speed @ clamp-vx
+    vx @ 0< if left turn then
+    vx @ 0> if right turn then 
+;
+
+: control-jump
+    vy @ 0<  <jump> held? and if 
+        rise-power @ negate vy +!  control-in-air
+    else
+        fall
+    then
+;
+
+: to-a-stop  .825 1. dampen vx @ abs .15 < if 0 vx ! then ;
+
+: walk-accel
+    fac @ left = if
+        vx @ -.08 + walk-speed @ negate max vx !  
+    else
+        vx @ .08 + walk-speed @ min vx !
+    then
+;
+
+: in-air?  on-ground @ not ;
+
+: apply-gravity ( - )
+    in-air? if vy @ gravity @ + terminal-vy @ min vy ! then ;
+
+variable was-hit
+
+: bg-collisions
+    \ falling @ if vy @ n2 +! ?plummet then
+    \ in-air? if was-hit off then
+    x1 2@ w1 2@ playfield tmcol>
+        was-hit on
+        climbing @ not if
+            \ ?crumble
+            floor? if
+                \ f2dup gap s>f f- ftile@ climbable?
+                \ f2dup ftile@ climbable? and if
+                \     drop false
+                \ then
+            then
+            in-air? if
+                floor? if
+                    0 n2 !  land exit
+                then
+            else
+                lwall? if
+                    <right> held? not if idle then
+                    \ <left> held? if ?door then
+                then
+                rwall? if
+                    <left> held? not if idle then
+                    \ <right> held? if ?door then
+                then
+            then
+        else
+            floor? if
+                x 2@ y1 @ >p + h1 @ >p +
+                    vx 2@ 2+ xy>cr playfield spot @ climbable?
+                        if drop 0 else 0 a.spd ! then
+            then
+        then
+;
+
+: platformer-physics  apply-gravity bg-collisions !flip ;
+: /platformer ( - ) max-hp @ hp ! ?walk ?idle physics> platformer-physics ;
+: playable  persist can-travel on right turn ;
+: solidity-hitbox! ( x y w h - ) w1 2! x1 2! ;
+
+\ Experimental simple behavior composing utility
+c: %actor beha-a beha-b ; 
+continuation: +act> 
+    beha-b !  beha @ beha-a ! 
+    act> beha-a @ execute beha-b @ execute ;
+
+\ Default logic
+trait: %platformer
+:: ->jump  jump-power @ negate vy ! act> control-jump ?climb ;
+:: ->walk  act> ?stop walk-accel ?jump ?climb ;
+:: ->idle  act> to-a-stop ?walk ?jump ?climb ;
+:: ->fall  on-ground off falling on act> control-in-air ?climb ;
+:: ->land  on-ground on falling off 0 vy ! 0 n2 ! ?walk ?idle ?stick ;
+trait;

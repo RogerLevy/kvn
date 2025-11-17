@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "room-first-01.tmj",
+    "activeFile": "room-end.tmj",
     "expandedProjectPaths": [
         "."
     ],
@@ -63,11 +63,11 @@
             }
         },
         "menu.tmj": {
-            "scale": 2,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 186.75,
-                "y": 115
+                "x": -134.33333333333337,
+                "y": 110
             }
         },
         "room-blank.tmj": {
@@ -79,11 +79,11 @@
             }
         },
         "room-end.tmj": {
-            "scale": 1,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 184.5,
-                "y": 309
+                "x": -1133.6666666666665,
+                "y": 201.33333333333334
             }
         },
         "room-first-01.tmj": {
@@ -294,21 +294,42 @@
     "map.tileWidth": 8,
     "map.width": 20,
     "openFiles": [
-        "room-first-01.tmj"
-    ],
-    "project": "kvn-long.tiled-project",
-    "recentFiles": [
         "room-first-01.tmj",
+        "menu.tmj",
+        "room-test-01.tmj",
+        "room-test-02.tmj",
+        "room-test-03.tmj",
+        "room-test-04.tmj",
+        "room-test-05.tmj",
+        "room-test-06.tmj",
+        "room-test-07.tmj",
         "room-test-08.tmj",
-        "room-end.tmj",
-        "room-giger-03.tmj",
+        "room-test-09.tmj",
+        "room-test-10.tmj",
+        "room-test-11.tmj",
+        "room-test-12.tmj",
         "room-test-13.tmj",
         "room-test-14.tmj",
         "room-giger-01.tmj",
         "room-giger-02.tmj",
+        "room-giger-03.tmj",
+        "room-long-01.tmj",
         "room-test-16.tmj",
-        "kvn-world-old.tmj",
-        "kvn-world-30.tmj",
-        "bg.tsx"
+        "room-end.tmj"
+    ],
+    "project": "kvn-long.tiled-project",
+    "recentFiles": [
+        "room-first-01.tmj",
+        "menu.tmj",
+        "room-test-01.tmj",
+        "room-test-02.tmj",
+        "room-test-03.tmj",
+        "room-test-04.tmj",
+        "room-test-05.tmj",
+        "room-test-06.tmj",
+        "room-test-07.tmj",
+        "room-test-08.tmj",
+        "room-test-09.tmj",
+        "room-test-10.tmj"
     ]
 }

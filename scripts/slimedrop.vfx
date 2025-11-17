@@ -1,5 +1,8 @@
 class: slimedrop
-    actor derive
+    %actor derive
+    prop gravity :fixed
+    prop terminal-vy :fixed
+
     0.025 gravity !
     1. terminal-vy !
 
