@@ -1,5 +1,6 @@
 class: crumbler
     actor derive
+class;
 
 crumbler :: init
     177 0 0 +tile!
@@ -8,5 +9,3 @@ crumbler :: init
     act> 0.25 passed? -exit
         0 0 0 +tile! 
         me unload ;
-
-class;

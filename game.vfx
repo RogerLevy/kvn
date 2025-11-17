@@ -1,7 +1,3 @@
-require savegame.vfx
-
-public
-
 : control
     <t> pressed? if clock toggle then
     <m> pressed? if mute toggle then
@@ -26,7 +22,6 @@ public
     ?kvn to p1  ;
 
 : game ( - )
-    game/ public
     can-save on
     hush
     show> render think ;
@@ -41,11 +36,12 @@ redef : restart ( - )
     \ Kickoff
     init-supershow 
     0 gamelife !
-    debug @ if
+    \ debug @ if
         new game
-    else
-        save-exists? if resume game else new game then
-    then ;
+    \ else
+    \     save-exists? if resume game else new game then
+    \ then 
+;
 
 : ?save
     \ Automatic saving

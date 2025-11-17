@@ -1,0 +1,23 @@
+bitmap assets/gfx/bg.png
+bg.png 8 8 tileset-from bg.ts
+bg.ts 0 tile pile !
+s" assets/gfx/bg.dat" bg.ts load-metas 
+
+sample assets/smp/beep1.wav
+sample assets/smp/beep2.wav
+sample assets/smp/beep3.wav
+sample assets/smp/beep4.wav
+sample assets/smp/beep5.wav
+sample assets/smp/beep6.wav
+sample assets/smp/beep7.wav
+sample assets/smp/beep8.wav
+\ sample assets/smp/beep9.wav
+sample assets/smp/beep10.wav
+sample assets/smp/beep11.wav
+sample assets/smp/beep12.wav
+sample assets/smp/beep13.wav
+sample assets/smp/beep14.wav
+sample assets/smp/beep15.wav
+sample assets/smp/beep16.wav
+sample assets/smp/beep17.wav
+sample assets/smp/beep18.wav

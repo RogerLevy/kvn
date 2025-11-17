@@ -5,6 +5,7 @@ class: slimedrop
 
     0.025 gravity !
     1. terminal-vy !
+class;
 
 : physics
     vy @ gravity @ + terminal-vy @ min vy !
@@ -16,5 +17,3 @@ slimedrop :: init
     ['] physics phys !
     -1 -1 x1 2! 2 2 w1 2!
     act> me p1 hit? -exit me unload s" slimed" evaluate ;
-
-class;

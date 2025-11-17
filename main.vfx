@@ -2,7 +2,41 @@
 \ KVN
 \ ------------------------------------------------------------------------------
 
-include %vfxland5%\spunk\loader.vfx
+\ Constants
+\ 320 constant gamew
+\ 240 constant gameh
+8 constant gap
+\ 1024 constant #actors
+20 constant #rooms
+
+\ Load engine
+include %vfxland5%/supershow/supershow.vfx
+include %vfxland5%/spunk/spunk.vfx
+
+\ Global assets
+s" require assets.vfx" ['] evaluate time? cr
+
+\ load game-specific modules (dependencies)
+\ require %idir%/savegame.vfx
+require %idir%/common.vfx
+
+\ Modes
+require %idir%/game.vfx
+require %idir%/gameover.vfx  
+require %idir%/options.vfx  
+
+\ Load scripts
+s" %idir%/scripts" ['] required each-file
+
+\ Load tools and run tests
 debug @ [if]
-\    include %vfxland5%\spunk\tools.vfx
+    \ include %vfxland5%\spunk\tools.vfx
+
+    : stock  999 c" key" get  999 c" ring" get  1000000 earn ;
+
+    new game stock
+
+    p1 -> x 2@   16. 0. 2+  2>i at  lift1 one constant lift0
+
+    update kvn
 [then]

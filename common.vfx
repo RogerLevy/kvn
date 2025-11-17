@@ -35,11 +35,6 @@ class;
 \ Platforming behavior
 require platformer.vfx
 
-\ Global assets
-bg.png 8 8 +tileset bg.ts
-bg.ts 0 tile pile !
-s" gfx\bg.dat" bg.ts load-metas 
-
 \ Inventory
 dictionary inventory
 redef : have ( $ - n )
@@ -66,7 +61,7 @@ redef : have ( $ - n )
 : get-note1  20 earn ;
 : get-note2  40 earn ;
 : get-beer  1000 earn *beep2* ;
-: get-baby  1000000 earn *beep9* ;
+\ : get-baby  1000000 earn *beep9* ;  \ potential ending?
 : dying  can-save off can-travel off ;  \ disables saving and traveling
 : slimed  s" death" gevent ;
 
@@ -94,12 +89,10 @@ redef : have ( $ - n )
 
 : ?travel
     can-travel @ -exit
-    p1 as>
-        beha @ -exit
-        x @ 320. >= if  4. y @ 1 travel  exit then
-        x @ 0. <= if  316. y @ -1 travel  exit then
-        y @ 240. >= if  x @ 4. 100 travel  exit then
-        y @ 0. <= if  x @ 236. -100 travel  then ;
+    x @ 320. >= if  4. y @ 1 travel  exit then
+    x @ 0. <= if  316. y @ -1 travel  exit then
+    y @ 240. >= if  x @ 4. 100 travel  exit then
+    y @ 0. <= if  x @ 236. -100 travel  then ;
 
 \ Status bar
 || : ?key  dup c" key" have <= if 11 emit else ." -" then 1 + ;
@@ -150,19 +143,22 @@ variable sfx
     hush  sfx !  -1 ;
 is voice?
 
+: sound-priority ( sample-xt priority - ) 
+    importance` rot >body -> id @` []! ;
+
 \ Sample priorities
-2 beep5.wav importance [] ! \ key
-1 beep2.wav importance [] ! \ collectible
-9 beep3.wav importance [] ! \ game over 
-9 beep18.wav importance [] ! \ death
-1 beep8.wav importance [] ! \ drop
-9 beep9.wav importance [] ! \ baby
-3 beep10.wav importance [] ! \ splat
-2 beep11.wav importance [] ! \ door
-2 beep13.wav importance [] ! \ fall
-1 beep14.wav importance [] ! \ jump
-1 beep15.wav importance [] ! \ drip
-3 beep17.wav importance [] ! \ secret
+' *beep5* 2 sound-priority \ key
+' *beep2* 1 sound-priority \ collectible
+' *beep3* 9 sound-priority \ game over 
+' *beep18* 9 sound-priority \ death
+' *beep8* 1 sound-priority \ drop
+\ ' *beep9* 9 sound-priority \ baby
+' *beep10* 3 sound-priority \ splat
+' *beep11* 2 sound-priority \ door
+' *beep13* 2 sound-priority \ fall
+' *beep14* 1 sound-priority \ jump
+' *beep15* 1 sound-priority \ drip
+' *beep17* 3 sound-priority \ secret
 
 \ Generator
 c: slimedrop ;
@@ -183,9 +179,9 @@ c: slimedrop ;
     loop ;
 
 \ Convert special tiles to actors
-c: secret ;
-c: %start ;
-c: lift1 ;
+c: secret %actor ;
+c: %start %actor ;
+c: lift1 %actor ;
 
 256 cell array tile-classes
 secret 22 tile-classes [] !

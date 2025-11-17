@@ -1,5 +1,7 @@
 require %idir%/platform.vfx
 
+bitmap assets/gfx/lift.png
+
 class: lift1
     %platform derive
 class;

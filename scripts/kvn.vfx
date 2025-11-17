@@ -1,6 +1,7 @@
-require scripts\crumbler.vfx
+require %idir%/crumbler.vfx
 
-kvn.png 8 8 +tileset kvn.ts
+bitmap assets/gfx/kvn.png
+kvn.png 8 8 tileset-from kvn.ts
 kvn.ts animation walk.anm    0 11 range,
 kvn.ts animation jump.anm    46 frame,
 kvn.ts animation climb.anm   34 45 range,
@@ -23,16 +24,16 @@ class: kvn
 class;
 
 \ Animation
-: ?footstep  a.done @ -exit *beep16* a.done off ;
+: ?footstep  a.done @ if *beep16* a.done off then ;
 : movelegs  vx @ abs 2 / 0.1 + .75 min a.spd ! ?footstep ;
-: ?walk.anm  anm @ walk.anm = ?exit  walk.anm 0 cycle ;
-: ?idle.anm  anm @ walk.anm = if  0 a.spd !  then  ?walk.anm ;
+: ?walk.anm  anm @ walk.anm <> if walk.anm 0 cycle then ;
+: ?idle.anm  anm @ walk.anm = if 0 a.spd ! then  ?walk.anm ;
 
 \ Physics phase
 : kvn-physics  platformer-physics ; \ ?plummet ?travel ?spikes ?collect ;
 
 \ Sound
-: land-sound  sfx @ beep13.wav = if 0 sfx ! then *beep12* ;
+: land-sound  sfx @ [&] *beep13* -> id @ = if 0 sfx ! then *beep12* ;
 
 \ Logic
 class: kvn
