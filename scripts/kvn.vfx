@@ -11,9 +11,7 @@ kvn.ts animation splat.anm   14 33 range,
 class: kvn
     %actor derive
     is-a %platformer
-
     -4 -3 8 7 solidity-hitbox!
-
     .12 gravity !
     1.5 terminal-vy !
     1.55 jump-power !
@@ -25,9 +23,9 @@ class;
 
 \ Animation
 : ?footstep  a.done @ if *beep16* a.done off then ;
-: movelegs  vx @ abs 2 / 0.1 + .75 min a.spd ! ?footstep ;
-: ?walk.anm  anm @ walk.anm <> if walk.anm 0 cycle then ;
-: ?idle.anm  anm @ walk.anm = if 0 a.spd ! then  ?walk.anm ;
+: movelegs  vx @ abs 2 / vx @ abs 0.15 >= if 0.1 + then .75 min a.spd ! ?footstep ;
+: ?walkanm  anm @ walk.anm <> if walk.anm 0 cycle then ;
+: ?idleanm  anm @ walk.anm = if 0 a.spd ! then  ?walkanm ;
 
 \ Physics phase
 : kvn-physics  platformer-physics ; \ ?plummet ?travel ?spikes ?collect ;
@@ -38,9 +36,9 @@ class;
 \ Logic
 class: kvn
 :: ->jump  platformer:->jump jump.anm 1. cycle *beep14* ;
-:: ->walk  platformer:->walk +act> movelegs ;
-:: ->idle  platformer:->idle +act> movelegs ;
+:: ->walk  platformer:->walk ?walkanm +act> movelegs ;
+:: ->idle  platformer:->idle ?idleanm +act> movelegs ;
 :: ->fall  platformer:->fall jump.anm 1. cycle ;
 :: ->land  platformer:->land land-sound ;
-:: init  playable /platformer ?idle.anm ;
+:: init  playable /platformer ;
 class;

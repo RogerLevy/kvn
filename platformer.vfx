@@ -60,11 +60,12 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 : ?idle  <left> held? <right> held? or not if idle then ;
 : ?dirkey  fac @ left = if <left> else <right> then ;
 : ?stop  ?dirkey letgo? if idle then ;
-: ?stick  ?dirkey held? not if .666 dup accel then ;
+: ?stick  ?dirkey held? not if .666 dup dampen then ;
 : stand  bottom vy @ + gap >p umod 1. + negate y +!  0 vy ! ;
 : ?climb  
     <down> held? if 0 1 +tile@ climbable? if 2. y +! climb exit then then 
     <down> held? <up> held? or if 0 0 +tile@ climbable? if climb then then ;
+: ?stepoff  vy @ 0> if fall then ;
 
 : control-in-air ( - )
     <left> held? if  air-control @ negate vx +!  then
@@ -96,13 +97,12 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 : in-air?  on-ground @ not ;
 
 : apply-gravity ( - )
-    in-air? if vy @ gravity @ + terminal-vy @ min vy ! then ;
+    vy @ gravity @ + terminal-vy @ min vy ! ;
 
 variable was-hit
 
-: bg-collisions
-    \ falling @ if vy @ n2 +! ?plummet then
-    \ in-air? if was-hit off then
+: ?bghit
+    was-hit off
     x1 2@ w1 2@ playfield tmcol>
         was-hit on
         climbing @ not if
@@ -136,6 +136,12 @@ variable was-hit
         then
 ;
 
+: bg-collisions
+    \ falling @ if vy @ n2 +! ?plummet then
+    \ in-air? if was-hit off then
+    ?bghit 
+;
+
 : platformer-physics  apply-gravity bg-collisions !flip ;
 : /platformer ( - ) max-hp @ hp ! ?walk ?idle physics> platformer-physics ;
 : playable  persist can-travel on right turn ;
@@ -149,9 +155,9 @@ continuation: +act>
 
 \ Default logic
 trait: %platformer
-:: ->jump  jump-power @ negate vy ! act> control-jump ?climb ;
-:: ->walk  act> ?stop walk-accel ?jump ?climb ;
-:: ->idle  act> to-a-stop ?walk ?jump ?climb ;
-:: ->fall  on-ground off falling on act> control-in-air ?climb ;
-:: ->land  on-ground on falling off 0 vy ! 0 n2 ! ?walk ?idle ?stick ;
+:: ->jump  ." jump " cr on-ground off jump-power @ negate vy ! act> control-jump ?climb ;
+:: ->walk  ." walk " cr act> walk-accel ?jump ?climb ?stop ?stepoff ;
+:: ->idle  ." idle " cr act> to-a-stop ?walk ?jump ?climb ;
+:: ->fall  ." fall " cr on-ground off falling on act> control-in-air ?climb ;
+:: ->land  ." land " cr on-ground on falling off 0 vy ! 0 n2 ! ?walk ?idle ?stick ;
 trait;
