@@ -1,0 +1,170 @@
+\ Moving Platform system
+\ Based on Cave Story platform mechanics (ActNpc149/157)
+\ Implements solid platform collision with any actor
+
+class: %actor
+    prop flags  \ same as tile metadata
+class;
+
+class: %platform
+    %actor derive
+class;
+
+\ ------------------------------------------------------------------------------
+\ Collision Side Detection (Cave Story algorithm from MycHit.cpp:654)
+\ Determines if collision is primarily vertical (top/bottom) or horizontal (left/right)
+
+: boxmid@ ( - x. y. )
+    { x 2@`` x1 2@ 2>p`` 2+`` w1 2@ 2>p 2 2 2/`` 2+ } ;
+
+: vertical? ( - flag )
+    {: | dx dy hw hh :}
+    \ Calculate distances between centers (absolute values)
+    you boxmid@ me boxmid@ 2- abs to dy abs to dx 
+
+    \ Calculate combined half-widths and half-heights
+    you -> w1 2@ 2>p`` w1 2@ 2>p`` 2+ 2 2 2/ to hh to hw     \ (Actor.width + platform.width) / 2
+
+    \ Check if dy*hw > dx*hh
+    dy hw p*` dx hh p*` > ;
+
+\ ------------------------------------------------------------------------------
+\ Actor Position Adjustment
+
+: push-up
+    \ Set Actor Y to sit on top of platform
+    \ Actor.y = platform.y - platform.y1 - platform.h1 - Actor.h1 - Actor.y1
+    y @` y1 @ >p -` h1 @ >p` -                    \ Platform top edge
+    you -> h1 @ >p -` you -> y1 @ >p` -            \ Subtract Actor height and offset
+    you -> y ! 
+    \ 0 you -> vy ! 
+;
+
+: push-down
+    \ Push Actor down to platform bottom
+    \ Actor.y = platform.y + platform.y1 + Actor.y1
+    y @` y1 @ >p +` you -> y1 @ >p` +
+    you -> y ! 
+;
+
+: push-left
+    \ Push Actor to left of platform
+    \ Actor.x = platform.x - platform.x1 - platform.w1 - Actor.w1 - Actor.x1
+    x @` x1 @ >p -` w1 @ >p` -
+    you -> w1 @ >p -` you -> x1 @ >p` -
+    you -> x ! 
+;
+
+: push-right
+    \ Push Actor to right of platform
+    \ Actor.x = platform.x + platform.x1 + platform.w1 + Actor.x1
+    x @` x1 @ >p + w1 @ >p +` you -> x1 @ >p` +
+    you -> x ! 
+;
+
+\ ------------------------------------------------------------------------------
+\ Riding Behavior (Cave Story MycHit.cpp:738-744)
+
+: on-top? ( - flag )
+    \ Actor must be above platform center and falling/moving down
+    you -> y @ y @ <
+    you -> vy @ 0 >= and ;
+
+: make-ride
+    push-up
+
+    \ Match vertical velocity
+    \ vy @ you -> vy !
+
+    \ Move with platform 
+    vx 2@ you -> x 2+! ;
+
+\ ------------------------------------------------------------------------------
+\ Crush Detection
+
+: solid-tile-at? ( x y - flag )
+    \ Check if there's a solid tile at pixel coordinates
+    \ TODO: support directional solidity flags
+    xy>cr playfield spot @ solid? ;
+
+: crush-left? ( - crushed? )
+    \ Check if Actor is crushed against left wall
+    \ Actor's left edge
+    you -> x @ you -> x1 @ >p + 4. -   \ X position, slightly to the left
+    you -> y @ you -> y1 @ >p + you -> h1 @ >p 2 / +  \ Y position at center
+    solid-tile-at? ;
+
+: crush-right? ( - crushed? )
+    \ Actor's right edge
+    you -> x @ you -> x1 @ >p + you -> w1 @ >p + 4. +
+    you -> y @ you -> y1 @ >p + you -> h1 @ >p 2 / +
+    solid-tile-at? ;
+
+: crush-up? ( - crushed? )
+    \ Actor's top edge
+    you -> x @ you -> x1 @ >p + you -> w1 @ >p 2 / +
+    you -> y @ you -> y1 @ >p + 4. -
+    solid-tile-at? ;
+
+\ : crush-down? ( - crushed? )
+\     \ Actor's bottom edge
+\     you -> x @ you -> x1 @ >p + you -> w1 @ >p 2 / +
+\     you -> y @ you -> y1 @ >p + you -> h1 @ >p + 4. +
+\     solid-tile-at? ;
+
+: crush
+    100 you hurt ;
+
+\ ------------------------------------------------------------------------------
+\ Main Collision Handler
+
+: vhit ( flag - flag )
+    on-top? if
+        \ Actor hit platform from above
+        flags @ BIT_FLR and 0= if drop 0 exit then
+        make-ride
+        true to floor?
+    else
+        \ Actor hit platform from below
+        flags @ BIT_CEL and 0= if drop 0 exit then
+        push-down
+        0 you -> vy ! 
+        crush-up? if crush then
+        true to ceiling?
+    then ;
+
+: hhit ( flag - flag )
+    you -> x @ x @ < if
+        \ Actor is to the left
+        flags @ BIT_WLT and 0= if drop 0 exit then
+        push-left
+        0 you -> vx ! 
+        crush-left? if crush then
+        true to lwall?
+    else
+        \ Actor is to the right
+        flags @ BIT_WRT and 0= if drop 0 exit then
+        push-right
+        0 you -> vx ! 
+        crush-right? if crush then
+        true to rwall?
+    then ;
+
+: platform-hit? ( - flag )
+    flags @ 0= if 0 exit then 
+    clear-collision-state
+    me you hit? dup -exit 
+    vertical? if vhit else hhit then ;
+
+public
+
+|| 0 value xt
+
+: _actcol
+    actives>  platform-hit? if xt execute then ;
+
+continuation: actcol> ( - ) ( - )
+    to xt 
+    \ vx 2@ 2negate x 2+!
+    _actcol ;
+    \ vx 2@ x 2+! ;

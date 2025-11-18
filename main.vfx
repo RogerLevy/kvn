@@ -3,10 +3,10 @@
 \ ------------------------------------------------------------------------------
 
 \ Constants
-\ 320 constant gamew
-\ 240 constant gameh
+320 constant gamew
+240 constant gameh
 8 constant gap
-\ 1024 constant #actors
+100 constant #actors
 20 constant #rooms
 
 \ Load engine
@@ -14,17 +14,19 @@ include %vfxland5%/supershow/supershow.vfx
 include %vfxland5%/spunk/spunk.vfx
 
 \ Global assets
+." Loading assets..." cr
 s" require assets.vfx" ['] evaluate time? cr
 
 \ load game-specific modules (dependencies)
 \ require %idir%/savegame.vfx
 require %idir%/common.vfx
+require %idir%/platform.vfx
 require %idir%/platformer.vfx
 
 \ Modes
 require %idir%/game.vfx
-require %idir%/gameover.vfx  
-require %idir%/options.vfx  
+require %idir%/gameover.vfx
+require %idir%/options.vfx
 
 \ Load scripts
 s" %idir%/scripts" ['] required each-file

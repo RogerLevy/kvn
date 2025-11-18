@@ -23,6 +23,25 @@ class: %actor
     prop can-travel <save
 class;
 
+trait: %hurtable
+    prop hp :int <save
+    :: kill me unload ;     : die me kill ;
+    : ?die  hp @ 0 <= if 0 hp ! die then ;
+    :: hurt ( n - ) negate hp +!  ?die ;
+trait;
+
+class: %actor
+    works-with %hurtable
+    static max-hp :int
+
+    template {
+        right fac !
+    }
+    %actor {
+        100 max-hp !
+    }
+class;  
+
 \ Misc
 : gevent
     2dup >pad find not if
@@ -95,8 +114,7 @@ redef : have ( $ - n )
 || : ?ring c" ring" have if 9 emit else ." -" then ; 
 || : p.2  p>f 2 (f.) type space ;
 || : 2#.  0 <# # # #> type ;
-|| : ?xy
-    debug @ -exit
+|| : .player-coords
     +m
     200e 0e 0.5e 1e 0e transform
     0 0 at
@@ -118,7 +136,7 @@ variable money-flashing
     then 
     11 8 * 0 +at
     s[ 1 ?key ?key ?key drop ?ring s] print  \ 5 8 * 0 +at
-    ?xy
+    debug @ if .player-coords then
     320 8 8 * - 0 at
     clock @ if
         s[ hrs 2#. ." :" mins 2#. ." :" secs 2#. s] print

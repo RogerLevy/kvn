@@ -1,5 +1,3 @@
-require %idir%/platform.vfx
-
 bitmap assets/gfx/lift.png
 
 class: lift1
@@ -17,7 +15,6 @@ lift1 :: init
     lift.png bmp !
     -4 -2 x1 2! 8 4 w1 2!
     BIT_FLR flags !
-    ['] platform-physics phys !
     \ -1. vy !
     act> 
         wraparound ;
