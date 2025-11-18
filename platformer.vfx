@@ -112,11 +112,7 @@ redef : accel ( vx. vy. - ) vx 2+! ;
                     exit
                 then
             then
-            in-air? if
-                \ floor? if
-                \     land exit
-                \ then
-            else
+            in-air? not if
                 lwall? if
                     <right> held? not if idle then
                     <left> held? if ?door then
@@ -140,9 +136,6 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 : ?acthit  
     0 to ground?
     actcol> 
-        \ Print platform
-        \ me .summary 
-
         ground? floor? or to ground?
 ;
 
