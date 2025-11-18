@@ -8,10 +8,13 @@ kvn.ts animation climb.anm   34 45 range,
 kvn.ts animation fall.anm    12 13 range,
 kvn.ts animation splat.anm   14 33 range,
 
+: normal-hitbox  -4 -3 8 7 solidity-hitbox! ;
+: falling-hitbox -4 -4 8 5 solidity-hitbox! ;
+
 class: kvn
     %actor derive
     is-a %platformer
-    -4 -3 8 7 solidity-hitbox!
+    normal-hitbox
     .12 gravity !
     1.5 terminal-vy !
     1.55 jump-power !
@@ -19,6 +22,7 @@ class: kvn
     .75 walk-speed !
     .75 terminal-vx !
     .08 air-control !
+    prop fd :fixed  \ fall distance
 class;
 
 \ Animation
@@ -27,14 +31,57 @@ class;
 : ?walkanm  anm @ walk.anm <> if walk.anm 0 cycle then ;
 : ?idleanm  anm @ walk.anm = if 0 a.spd ! then  ?walkanm ;
 
-\ Features
+\ Collect items
 : ?collect
-    -4 -4 8 8 playfield tread> dup @ | t a |
+    -4 -4 8 8 playfield tread> 
+        dup @ | t a |
         t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
 
-\ Physics
-\ falling @ if vy @ n2 +! ?plummet then
-: kvn-physics  platformer-physics ?travel ?collect ; \ ?plummet  ?spikes  ;
+: common-physics  ?travel ?collect ; \ ?pit ?spikes ?crumble
+
+\ Plummeting (lose control, splat if fall too far)
+: splat
+    0 fd ! 
+    -collisions
+    splat.anm 0.25 cycle
+    *beep10*
+    act> a.done @ -exit anm off
+    act> 1.0 passed? -exit die ;
+
+: plummet-physics 
+    platformer-physics common-physics
+    vy @ fd +!
+    ground? if
+        fd @ 112. >= if
+            splat
+        else
+            \ LAND is already called
+            normal-hitbox
+            -4. y +!
+        then
+    then ;
+
+    \ -3 -4 6 5 playfield tmcol>
+    \     ?crumble
+    \     floor? if
+    \         n2 @ 112. < if stand land else splat then
+    \     then ;
+
+: plummet
+    ." plummet " cr
+    falling-hitbox
+    fall.anm 0.25 cycle 
+    *beep13*
+    act> physics> plummet-physics ;
+
+: ?plummet
+    falling @ -exit
+    vy @ fd +!  fd @ 68. >= -exit
+    plummet ;
+
+
+\ Normal Physics
+: kvn-physics  platformer-physics common-physics ?plummet ; 
 
 \ Sound
 : land-sound  sfx @ [&] *beep13* -> id @ = if 0 sfx ! then *beep12* ;
@@ -46,7 +93,7 @@ class: kvn
 :: ->jump  platformer:->jump jump.anm 1. cycle *beep14* ;
 :: ->walk  platformer:->walk ?walkanm +act> movelegs ;
 :: ->idle  platformer:->idle ?idleanm +act> movelegs ;
-:: ->fall  platformer:->fall jump.anm 1. cycle ;
-:: ->land  platformer:->land land-sound ;
+:: ->fall  platformer:->fall jump.anm 1. cycle 0 fd ! ;
+:: ->land  platformer:->land land-sound physics> kvn-physics ;
 :: init  playable /platformer physics> kvn-physics ;
 class;

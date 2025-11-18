@@ -14,7 +14,6 @@ variable #deaths
 create item$ 17 allot&erase 
 variable clock  clock on
 variable payment
-variable godmode
 variable mute
 variable #secrets
 variable can-save

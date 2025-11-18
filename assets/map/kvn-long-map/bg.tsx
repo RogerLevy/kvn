@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.10" tiledversion="1.11.0" name="bg" tilewidth="8" tileheight="8" tilecount="256" columns="16">
+<tileset version="1.10" tiledversion="1.11.2" name="bg" tilewidth="8" tileheight="8" tilecount="512" columns="16">
  <transformations hflip="1" vflip="1" rotate="1" preferuntransformed="1"/>
- <image source="../../../dat/gfx/bg.png" width="128" height="128"/>
+ <image source="../../gfx/bg.png" width="128" height="256"/>
  <wangsets>
   <wangset name="ascii" type="edge" tile="-1">
    <wangcolor name="double lines" color="#ff0000" tile="-1" probability="1"/>

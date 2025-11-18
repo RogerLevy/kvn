@@ -50,7 +50,6 @@ defer paying
 public
 
 : death ( - )
-    godmode @ ?exit
     death/ movie 
     1 #deaths +!
     ['] paying1 is paying

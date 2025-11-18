@@ -34,6 +34,9 @@ trait: %platformer
 
 trait;
 
+public
+0 value ground?
+
 private
 
 : !flip  0 fac @ left = if h| then a.flp ! ;
@@ -57,7 +60,7 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 : ?stepoff  climbing @ ?exit  vy @ 0> if fall then ;
 : to-a-stop  .825 1. dampen vx @ abs .15 < if 0 vx ! then ;
 
-: control-in-air ( - )
+: control-in-air
     <left> held? if  air-control @ negate vx +!  then
     <right> held? if  air-control @ vx +!  then
     .98 1. dampen 
@@ -95,8 +98,6 @@ redef : accel ( vx. vy. - ) vx 2+! ;
         0 f2dup ftile! 1 c" ring" discard exit 
     then 
 ;
-
-0 value ground?
 
 : ?bghit
     0 to ground?
@@ -147,12 +148,10 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 
 : solid-collisions
     ?bghit ground? 
-    \ vy p?
     ?acthit ground?
-    \ vy p? cr
-    climbing @ if 2drop exit then
-    or if 
-        \ ." floor ..... " cr
+    or to ground?
+    climbing @ ?exit
+    ground? if 
         on-ground @ not if land then
     else 
         on-ground @ if ?stepoff then 
@@ -209,6 +208,6 @@ trait: %platformer
 :: ->walk  ." walk " cr act> walk-accel ?jump ?climb ?stop ;
 :: ->idle  ." idle " cr act> to-a-stop ?walk ?jump ?climb ;
 :: ->fall  ." fall " cr on-ground off falling on act> control-in-air ?climb ;
-:: ->land  ." land " cr on-ground on falling off 0 n2 ! ?walk ?idle ?stick ;
+:: ->land  ." land " cr on-ground on falling off ?walk ?idle ?stick ;
 :: ->climb ." climb " cr _climb ;
 trait;
