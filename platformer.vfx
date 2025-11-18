@@ -99,6 +99,20 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 : apply-gravity ( - )
     vy @ gravity @ + terminal-vy @ min vy ! ;
 
+: ?door 
+    \ TODO: Generalize
+    f2dup ftile@ 8 =
+    c" key" have and if
+        *beep11*
+        0 f2dup ftile! 1 c" key" discard exit 
+    then
+    f2dup ftile@ 10 =
+    c" ring" have and if
+        *beep11*
+        0 f2dup ftile! 1 c" ring" discard exit 
+    then 
+;
+
 variable was-hit
 
 : ?bghit
@@ -122,11 +136,11 @@ variable was-hit
             else
                 lwall? if
                     <right> held? not if idle then
-                    \ <left> held? if ?door then
+                    <left> held? if ?door then
                 then
                 rwall? if
                     <left> held? not if idle then
-                    \ <right> held? if ?door then
+                    <right> held? if ?door then
                 then
             then
         else
@@ -139,8 +153,6 @@ variable was-hit
 ;
 
 : bg-collisions
-    \ falling @ if vy @ n2 +! ?plummet then
-    \ in-air? if was-hit off then
     ?bghit 
 ;
 

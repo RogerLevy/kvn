@@ -19,6 +19,7 @@ s" require assets.vfx" ['] evaluate time? cr
 \ load game-specific modules (dependencies)
 \ require %idir%/savegame.vfx
 require %idir%/common.vfx
+require %idir%/platformer.vfx
 
 \ Modes
 require %idir%/game.vfx

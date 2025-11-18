@@ -32,7 +32,8 @@ class;
     -4 -4 8 8 playfield tread> dup @ | t a |
         t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
 
-\ Physics phase
+\ Physics
+\ falling @ if vy @ n2 +! ?plummet then
 : kvn-physics  platformer-physics ?travel ?collect ; \ ?plummet  ?spikes  ;
 
 \ Sound

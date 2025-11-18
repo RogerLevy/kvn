@@ -23,7 +23,6 @@ class: %actor
     prop can-travel <save
 class;
 
-
 \ Misc
 : gevent
     2dup >pad find not if
@@ -31,9 +30,6 @@ class;
     else nip nip execute then ;
 
 : climbable?  $ff and 240 = ;
-
-\ Platforming behavior
-require platformer.vfx
 
 \ Inventory
 dictionary inventory

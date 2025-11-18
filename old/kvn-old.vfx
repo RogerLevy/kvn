@@ -60,18 +60,6 @@ class;
     act> 
     physics> plummet-physics ;
 
-: ?door 
-    f2dup ftile@ 8 =
-    c" key" have and if
-        *beep11*
-        0 f2dup ftile! 1 c" key" discard exit 
-    then
-    f2dup ftile@ 10 =
-    c" ring" have and if
-        *beep11*
-        0 f2dup ftile! 1 c" ring" discard exit 
-    then ;
-
 : ?-  vx @ 0< if negate then ;
 
 : ?unclimb
