@@ -24,10 +24,6 @@ class;
         halt phys off r> drop
         s" death" gevent 
     then ;
-    
-: ?collect
-    -4 -4 8 8 playfield tread> dup @ | t a |
-        t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
 
 : splat
     floating halt splat.anm 0.25 cycle

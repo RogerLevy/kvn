@@ -108,10 +108,12 @@ variable was-hit
         climbing @ not if
             \ ?crumble
             floor? if
-                \ f2dup gap s>f f- ftile@ climbable?
-                \ f2dup ftile@ climbable? and if
-                \     drop false
-                \ then
+                f2dup gap s>f f- ftile@ climbable?
+                f2dup ftile@ climbable? and if
+                    drop false
+                    was-hit off
+                    exit
+                then
             then
             in-air? if
                 floor? if

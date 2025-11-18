@@ -27,8 +27,13 @@ class;
 : ?walkanm  anm @ walk.anm <> if walk.anm 0 cycle then ;
 : ?idleanm  anm @ walk.anm = if 0 a.spd ! then  ?walkanm ;
 
+\ Features
+: ?collect
+    -4 -4 8 8 playfield tread> dup @ | t a |
+        t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
+
 \ Physics phase
-: kvn-physics  platformer-physics ; \ ?plummet ?travel ?spikes ?collect ;
+: kvn-physics  platformer-physics ?travel ?collect ; \ ?plummet  ?spikes  ;
 
 \ Sound
 : land-sound  sfx @ [&] *beep13* -> id @ = if 0 sfx ! then *beep12* ;
@@ -40,5 +45,5 @@ class: kvn
 :: ->idle  platformer:->idle ?idleanm +act> movelegs ;
 :: ->fall  platformer:->fall jump.anm 1. cycle ;
 :: ->land  platformer:->land land-sound ;
-:: init  playable /platformer ;
+:: init  playable /platformer physics> kvn-physics ;
 class;
