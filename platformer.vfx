@@ -34,13 +34,15 @@ trait: %platformer
 
 trait;
 
+private
+
 : !flip  0 fac @ left = if h| then a.flp ! ;
 : bottom ( - y. ) y @ y1 @ >p + h1 @ >p + ;
 : dampen ( fx. fy. - ) vx 2@ 2p* vx 2! ;
 : clamp-vx ( vx. - ) vx @ swap dup negate swap clamp vx ! ;
 redef : accel ( vx. vy. - ) vx 2+! ;
 : in-air?  on-ground @ not ;
-: apply-gravity  vy @ gravity @ + terminal-vy @ min vy ! ;
+: apply-gravity  climbing @ ?exit  vy @ gravity @ + terminal-vy @ min vy ! ;
 
 : ?jump  <jump> pressed? if jump then ;
 : ?walk  <left> held? if left turn walk then  <right> held? if right turn walk then ;
@@ -52,7 +54,7 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 : ?climb  
     <down> held? if 0 1 +tile@ climbable? if 2. y +! climb exit then then 
     <down> held? <up> held? or if 0 0 +tile@ climbable? if climb then then ;
-: ?stepoff  vy @ 0> if fall then ;
+: ?stepoff  climbing @ ?exit  vy @ 0> if fall then ;
 : to-a-stop  .825 1. dampen vx @ abs .15 < if 0 vx ! then ;
 
 : control-in-air ( - )
@@ -99,13 +101,13 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 : ?bghit
     0 to ground?
     x1 2@ w1 2@ playfield tmcol>
-        ground? floor? or to ground?
         climbing @ not if
             \ ?crumble
             floor? if
                 f2dup gap s>f f- ftile@ climbable?
                 f2dup ftile@ climbable? and if
                     drop false
+                    0 to floor?
                     exit
                 then
             then
@@ -130,6 +132,8 @@ redef : accel ( vx. vy. - ) vx 2+! ;
                         if drop 0 else 0 a.spd ! then
             then
         then
+        ground? floor? or to ground?
+
 ;
 
 : ?acthit  
@@ -146,6 +150,7 @@ redef : accel ( vx. vy. - ) vx 2+! ;
     \ vy p?
     ?acthit ground?
     \ vy p? cr
+    climbing @ if 2drop exit then
     or if 
         \ ." floor ..... " cr
         on-ground @ not if land then
@@ -154,6 +159,7 @@ redef : accel ( vx. vy. - ) vx 2+! ;
     then
 ;
 
+public
 : platformer-physics  apply-gravity solid-collisions !flip ;
 : /platformer ( - ) max-hp @ hp ! ?walk ?idle physics> platformer-physics ;
 : playable  persist can-travel on right turn ;
@@ -165,6 +171,38 @@ continuation: +act>
     beha-b !  beha @ beha-a ! 
     act> beha-a @ execute beha-b @ execute ;
 
+private
+\ Climbing
+: ?-  vx @ 0< if negate then ;
+
+: ?unclimb
+    0 0 +tile@ climbable? ?exit
+    climbing off
+    vy @ 0> if fall 
+    else gap -2 / >p y +! idle then ;
+
+: ?dismount
+    x 2@ y1 @ >p +` h1 @ >p + 1. +` xy>cr playfield spot @ climbable? ?exit 
+    climbing off
+    fac @ turn walk ;
+
+: _climb
+    falling off  climbing on  0 vx !
+    x @ dup gap >p mod - gap >p 2 / + x !
+    act>
+        <up> held? <down> held? or if 1. 3 / else 0 then a.spd !
+        <up> held? if -.5 else
+            <down> held? if .5 else
+                0 then then vy !
+        <left> held? if left fac ! ?dismount then 
+        <right> held? if right fac ! ?dismount then
+        ?unclimb
+        \ <jump> pressed? if
+        \     <left> held? if -1. vx ! -1 0 ?hop exit then
+        \     <right> held? if 1. vx ! 1 0 ?hop exit then
+        \ then ;
+;
+
 \ Default logic
 trait: %platformer
 :: ->jump  ." jump " cr on-ground off jump-power @ negate vy ! act> control-jump ?climb ;
@@ -172,4 +210,5 @@ trait: %platformer
 :: ->idle  ." idle " cr act> to-a-stop ?walk ?jump ?climb ;
 :: ->fall  ." fall " cr on-ground off falling on act> control-in-air ?climb ;
 :: ->land  ." land " cr on-ground on falling off 0 n2 ! ?walk ?idle ?stick ;
+:: ->climb ." climb " cr _climb ;
 trait;

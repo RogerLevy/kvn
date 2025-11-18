@@ -41,6 +41,7 @@ class;
 
 \ Logic
 class: kvn
+:: ->climb platformer:->climb climb.anm 0 cycle ;
 :: kill me unload s" death" gevent ;
 :: ->jump  platformer:->jump jump.anm 1. cycle *beep14* ;
 :: ->walk  platformer:->walk ?walkanm +act> movelegs ;
