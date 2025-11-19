@@ -76,8 +76,12 @@ class;
     \ Match vertical velocity
     \ vy @ you -> vy !
 
+    \ Zero vertical velocity
+    0 you -> vy !
+
     \ Move with platform 
-    vx 2@ you -> x 2+! ;
+    vx 2@ you -> x 2+! 
+;
 
 \ ------------------------------------------------------------------------------
 \ Crush Detection

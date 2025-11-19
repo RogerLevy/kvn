@@ -35,8 +35,6 @@ class: %actor
 
     template {
         right fac !
-    }
-    %actor {
         100 max-hp !
     }
 class;  
