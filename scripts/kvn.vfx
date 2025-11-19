@@ -2,11 +2,6 @@ require %idir%/crumbler.vfx
 
 bitmap assets/gfx/kvn.png
 kvn.png 8 8 tileset-from kvn.ts
-kvn.ts animation walk.anm    0 11 range,
-kvn.ts animation jump.anm    46 frame,
-kvn.ts animation climb.anm   34 45 range,
-kvn.ts animation fall.anm    12 13 range,
-kvn.ts animation splat.anm   14 33 range,
 
 : normal-hitbox  -3 -3 6 7 solidity-hitbox! ;
 : falling-hitbox -3 -4 6 5 solidity-hitbox! ;
@@ -24,6 +19,12 @@ class: kvn
     .08 air-control !
     prop fd :fixed  \ fall distance
 class;
+
+kvn.ts animation walk.anm    0 11 range,
+kvn.ts animation jump.anm    46 frame,
+kvn.ts animation climb.anm   34 45 range,
+kvn.ts animation fall.anm    12 13 range,
+kvn.ts animation splat.anm   14 33 range,
 
 \ Animation
 : ?footstep  a.done @ if *beep16* a.done off then ;

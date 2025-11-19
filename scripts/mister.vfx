@@ -1,0 +1,21 @@
+bitmap assets/gfx/mister.png
+mister.png 8 8 tileset-from mister.ts
+bitmap assets/gfx/mister-walk.png
+mister-walk.png 16 8 tileset-from mister-walk.ts
+
+class: %mister
+    %actor derive
+    is-a %platformer
+class;
+
+mister.ts animation idle.anm   0 3 range,
+mister.ts animation crouch1.anm   4 frame,
+mister.ts animation crouch2.anm   5 6 range,
+mister-walk.ts animation walk.anm   0 2 range,
+
+: ?appear  #secrets @ TOTAL_SECRETS >= if appear idle then ;
+
+class: %mister
+:: ->idle  idle.anm 0.25 cycle 0 h| a.flp ! act> ;
+:: init  vanish act> ?appear ;
+class;

@@ -66,8 +66,8 @@
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -2713.5,
-                "y": -87.33333333333334
+                "x": -62.5,
+                "y": 166.66666666666666
             }
         },
         "room-blank.tmj": {
@@ -79,11 +79,11 @@
             }
         },
         "room-end.tmj": {
-            "scale": 0.5,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -2007,
-                "y": -142
+                "x": 382.33333333333337,
+                "y": 138
             }
         },
         "room-first-01.tmj": {
@@ -95,11 +95,11 @@
             }
         },
         "room-giger-01.tmj": {
-            "scale": 3,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 462.49999999999994,
-                "y": 58
+                "x": -455.33333333333326,
+                "y": 145.33333333333331
             }
         },
         "room-giger-02.tmj": {
@@ -234,16 +234,16 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 667.3333333333333,
-                "y": 349.33333333333326
+                "x": 184.66666666666663,
+                "y": 145.33333333333331
             }
         },
         "room-test-14.tmj": {
-            "scale": 2,
+            "scale": 4,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 633.25,
-                "y": 210.5
+                "x": 38.625,
+                "y": 87.5
             }
         },
         "room-test-15.tmj": {

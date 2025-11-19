@@ -16,6 +16,7 @@ variable clock  clock on
 variable payment
 variable mute
 variable #secrets
+18 constant TOTAL_SECRETS
 variable can-save
 
 class: %actor
@@ -93,7 +94,30 @@ redef : have ( $ - n )
         drop s" noop" 
     end-case ;
 
+
+\ Spawn KVN
+c: kvn ;
+: find-kvn  who> me kvn is? ;
+
+c: %start ;
+: find-start  who> me %start is? ;
+
+: ?kvn ( - actor )
+    find-start ?dup if 0 0 from then 
+    find-kvn ?dup if
+        at@ 2>p p1 -> x 2!
+        p1 init
+    else
+        512 priority kvn one to p1 
+        0 priority
+        p1 
+    then ;
+
+
 \ Movement between rooms
+ 
+redef : +warp  +warp ?kvn drop ;
+redef : warp   warp ?kvn drop ;
 
 : travel ( x. y. n - )
     +warp x 2! 
@@ -193,17 +217,22 @@ c: slimedrop ;
 c: secret %actor ;
 c: %start %actor ;
 c: lift1 %actor ;
+c: %mister %actor ;
 
-256 cell array tile-classes
+bg.ts -> #tiles @ cell array tile-classes
 secret 22 tile-classes [] !
 %start 130 tile-classes [] !
 lift1 166 tile-classes [] !
+%mister 257 tile-classes [] !
+
+: tile>class
+    dup bg.ts -> #tiles @ 0 swap within? not if drop 0 exit then
+    tile-classes [] @ ;
 
 : spawn-tile-objects
     tmh for
         tmw for
-            i j playfield spot c@ 
-            tile-classes [] @ ?dup if
+            i j playfield spot w@ tile>class ?dup if
                 i j att ( class ) one drop 
                 0 i j playfield spot !
             then
@@ -211,24 +240,6 @@ lift1 166 tile-classes [] !
     loop ;
 
 load-room-chain link ' spawn-tile-objects ,
-
-\ Spawn KVN
-c: kvn ;
-: find-kvn  who> me kvn is? ;
-
-c: %start ;
-: find-start  who> me %start is? ;
-
-: ?kvn ( - actor )
-    find-start ?dup if 0 0 from then 
-    find-kvn ?dup if
-        at@ 2>p p1 -> x 2!
-        p1 init
-    else
-        512 priority kvn one to p1 
-        0 priority
-        p1 
-    then ;
 
 : options-key-pressed?
     <esc> pressed? debug @ if shift? and then ;

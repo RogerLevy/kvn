@@ -39,7 +39,9 @@ debug @ [if]
 
     new game stock
 
-    p1 -> x 2@   16. 0. 2+  2>i at  lift1 one constant lift0
+    \ p1 -> x 2@   16. 0. 2+  2>i at  lift1 one constant lift0
+
+    18 warp
 
     update kvn
 [then]
