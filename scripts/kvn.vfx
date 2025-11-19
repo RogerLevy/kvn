@@ -61,12 +61,6 @@ class;
         then
     then ;
 
-    \ -3 -4 6 5 playfield tmcol>
-    \     ?crumble
-    \     floor? if
-    \         n2 @ 112. < if stand land else splat then
-    \     then ;
-
 : plummet
     ." plummet " cr
     falling-hitbox
