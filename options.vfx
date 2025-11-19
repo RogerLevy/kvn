@@ -31,8 +31,9 @@ public
 : options
     options>>
     0 option# !
-    show>
+    work>
         control
+    show>
         crt>
             backsprites  bg  sprites  hud
             menu ;

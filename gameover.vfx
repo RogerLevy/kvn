@@ -22,7 +22,8 @@ public : gameover
     1 #deaths +!
     s" kvn.sav" delete-file drop
     *beep3*
-    show>
+    work>
         step
+    show>
         crt> 
             160 120 8 - at  s" GAME OVER" centered print ;

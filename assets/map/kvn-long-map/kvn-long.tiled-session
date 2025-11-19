@@ -63,11 +63,11 @@
             }
         },
         "menu.tmj": {
-            "scale": 1.5,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -134.66666666666669,
-                "y": 110
+                "x": -2713.5,
+                "y": -87.33333333333333
             }
         },
         "room-blank.tmj": {
@@ -87,11 +87,11 @@
             }
         },
         "room-first-01.tmj": {
-            "scale": 4,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 175.625,
-                "y": 143
+                "x": 202.83333333333331,
+                "y": 127.33333333333331
             }
         },
         "room-giger-01.tmj": {
