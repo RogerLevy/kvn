@@ -24,8 +24,9 @@
 : game ( - )
     can-save on
     hush
+    show> render
     work> think
-    show> render ;
+;
 
 redef : restart ( - )
     blank blank blank blank  new game ;

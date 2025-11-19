@@ -24,7 +24,6 @@ defer paying
     blank 
     1.5 timer>
         ['] paying2 is paying
-\    1.0 timer>
         c" money" have 1000 >= if
             1000 pay
             \ ['] paying3 is paying
@@ -55,5 +54,7 @@ public
     ['] paying1 is paying
     *beep18*
     show>
+        crt> hud text
+    work>
         step instalment
-        crt> hud text ;
+;
