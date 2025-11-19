@@ -82,7 +82,7 @@ class;
 \ ------------------------------------------------------------------------------
 \ Crush Detection
 
-: solid-tile-at? ( x y - flag )
+: solid-tile-at? ( x. y. - flag )
     \ Check if there's a solid tile at pixel coordinates
     \ TODO: support directional solidity flags
     xy>cr playfield spot @ solid? ;

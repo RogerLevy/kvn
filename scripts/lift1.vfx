@@ -15,7 +15,7 @@ lift1 :: init
     lift.png bmp !
     -4 -2 x1 2! 8 4 w1 2!
     BIT_FLR flags !
-    \ -1. vy !
+    -1. vy !
     act> 
         wraparound ;
 

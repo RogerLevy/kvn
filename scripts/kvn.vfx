@@ -8,8 +8,8 @@ kvn.ts animation climb.anm   34 45 range,
 kvn.ts animation fall.anm    12 13 range,
 kvn.ts animation splat.anm   14 33 range,
 
-: normal-hitbox  -4 -3 8 7 solidity-hitbox! ;
-: falling-hitbox -4 -4 8 5 solidity-hitbox! ;
+: normal-hitbox  -3 -3 6 7 solidity-hitbox! ;
+: falling-hitbox -3 -4 6 5 solidity-hitbox! ;
 
 class: kvn
     %actor derive
@@ -37,7 +37,22 @@ class;
         dup @ | t a |
         t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
 
-: common-physics  ?travel ?collect ; \ ?pit ?spikes ?crumble
+\ Pit death
+: ?pit
+    y @ vy @ + gameh >p > if
+        halt phys off 
+        die
+    then ;
+
+\ Spikes death
+: ?spikes
+    vy @ 0 >= -exit
+    hp @ -exit 
+    0 0 +tile@ instakill? -exit
+    die ;
+
+\ Common physics
+: common-physics  ?travel ?collect ?pit ?spikes ;
 
 \ Plummeting (lose control, splat if fall too far)
 : splat

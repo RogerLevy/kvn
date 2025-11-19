@@ -99,11 +99,22 @@ redef : accel ( vx. vy. - ) vx 2+! ;
     then 
 ;
 
+c: crumbler %actor ;
+
+\ Crumbling blocks
+: ?crumble
+    floor? -exit
+    f2dup ftile@ 178 = -exit
+    fover f>s fdup f>s at
+    crumbler one drop ;
+
+\ Background collisions
 : ?bghit
     0 to ground?
-    x1 2@ w1 2@ playfield tmcol>
+    x1 2@ w1 2@ playfield tmcol> 
+        ( f:x f:y )
         climbing @ not if
-            \ ?crumble
+            ?crumble
             floor? if
                 f2dup gap s>f f- ftile@ climbable?
                 f2dup ftile@ climbable? and if
