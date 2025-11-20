@@ -17,9 +17,11 @@
     clear-world ;
 
 : new ( - )
-    init-state  load-world
+    init-state  
+    load-world
     0 warp
-    ?kvn to p1  ;
+    ?kvn to p1  
+;
 
 : game ( - )
     can-save on
