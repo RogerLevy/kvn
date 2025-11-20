@@ -142,7 +142,7 @@ redef : warp   warp ?kvn drop ;
     s[ p1 [[ x @ p.2 y @ p.2 ]] s] print
     -m
 ;
-: hrs  gametime 360000000 m/ ;
+: hrs  gametime 360000000 m/ 10 / ;
 : mins  gametime 60000000 m/ 60 mod ;
 : secs  gametime 1000000 m/ 60 mod ;
 variable money-flashing
