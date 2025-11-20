@@ -86,38 +86,32 @@ class;
 \ ------------------------------------------------------------------------------
 \ Crush Detection
 
-: solid-tile-at? ( x. y. - flag )
-    \ Check if there's a solid tile at pixel coordinates
-    \ TODO: support directional solidity flags
-    xy>cr playfield spot @ solid? ;
-
 : crush-left? ( - crushed? )
     \ Check if Actor is crushed against left wall
     \ Actor's left edge
-    you -> x @ you -> x1 @ >p + 4. -   \ X position, slightly to the left
+    you -> x @ you -> x1 @ >p + 1. +   \ X position, slightly to the left
     you -> y @ you -> y1 @ >p + you -> h1 @ >p 2 / +  \ Y position at center
-    solid-tile-at? ;
+    xy>cr playfield spot @ meta BIT_WRT and 0<> ;
 
 : crush-right? ( - crushed? )
     \ Actor's right edge
-    you -> x @ you -> x1 @ >p + you -> w1 @ >p + 4. +
+    you -> x @ you -> x1 @ >p + you -> w1 @ >p + 1. -
     you -> y @ you -> y1 @ >p + you -> h1 @ >p 2 / +
-    solid-tile-at? ;
+    xy>cr playfield spot @ meta BIT_WLT and 0<> ;
 
 : crush-up? ( - crushed? )
     \ Actor's top edge
     you -> x @ you -> x1 @ >p + you -> w1 @ >p 2 / +
-    you -> y @ you -> y1 @ >p + 4. -
-    solid-tile-at? ;
+    you -> y @ you -> y1 @ >p + 1. +
+    xy>cr playfield spot @ meta BIT_CEL and 0<> ;
 
-\ : crush-down? ( - crushed? )
-\     \ Actor's bottom edge
-\     you -> x @ you -> x1 @ >p + you -> w1 @ >p 2 / +
-\     you -> y @ you -> y1 @ >p + you -> h1 @ >p + 4. +
-\     solid-tile-at? ;
+: crush-down? ( - crushed? )
+    \ Actor's bottom edge
+    you -> x @ you -> x1 @ >p + you -> w1 @ >p 2 / +
+    you -> y @ you -> y1 @ >p + you -> h1 @ >p + 1. -
+    xy>cr playfield spot @ meta BIT_FLR and 0<> ;
 
-: crush
-    100 you hurt ;
+: crush  you kill ;
 
 \ ------------------------------------------------------------------------------
 \ Main Collision Handler
@@ -126,14 +120,15 @@ class;
     on-top? if
         \ Actor hit platform from above
         flags @ BIT_FLR and 0= if drop 0 exit then
+        crush-up? if crush exit then
         make-ride
         true to floor?
     else
         \ Actor hit platform from below
         flags @ BIT_CEL and 0= if drop 0 exit then
+        crush-down? if crush exit then
         push-down
         0 you -> vy ! 
-        crush-up? if crush then
         true to ceiling?
     then ;
 
@@ -141,16 +136,16 @@ class;
     you -> x @ x @ < if
         \ Actor is to the left
         flags @ BIT_WLT and 0= if drop 0 exit then
+        crush-right? if crush exit then
         push-left
         0 you -> vx ! 
-        crush-left? if crush then
         true to lwall?
     else
         \ Actor is to the right
         flags @ BIT_WRT and 0= if drop 0 exit then
+        crush-left? if crush exit then
         push-right
         0 you -> vx ! 
-        crush-right? if crush then
         true to rwall?
     then ;
 

@@ -39,11 +39,8 @@ kvn.ts animation splat.anm   14 33 range,
         t collectible? if t ?item 2dup type evaluate cr 0 a ! then ;
 
 \ Pit death
-: ?pit
-    y @ vy @ + gameh >p > if
-        halt phys off 
-        die
-    then ;
+: ?pit  y @ vy @ + gameh >p > if halt phys off die then ;
+: ?ubk  y @ vy @ + 8. < if halt phys off die then ;
 
 \ Spikes death
 : ?spikes
@@ -53,7 +50,7 @@ kvn.ts animation splat.anm   14 33 range,
     die ;
 
 \ Common physics
-: common-physics  ?travel ?collect ?pit ?spikes ;
+: common-physics  ?travel ?collect ?pit ?ubk ?spikes ;
 
 \ Plummeting (lose control, splat if fall too far)
 : splat

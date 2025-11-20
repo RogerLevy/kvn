@@ -9,7 +9,7 @@
 
 : render  crt>  backsprites  bg  sprites  hud ;
 
-: think  generate animate step ?travel instalment control muting ;
+: think  generate animate step instalment control muting ;
 
 : init-state ( - )
     divest  

@@ -4,18 +4,13 @@ class: lift1
     %platform derive
 class;
 
-\ : physics
-\     me p1 hit? -exit
-\     y @ p1 -> y @ <= -exit
-\     y @ y1 @ >p + p1 { h1 @ >p - y1 @ >p - y ! } ;
-
 : wraparound  y @ -8. < if 248. y ! then ;
 
 lift1 :: init
     lift.png bmp !
     -4 -2 x1 2! 8 4 w1 2!
     BIT_FLR flags !
-    -1. vy !
+    -.5 vy !
     act> 
         wraparound ;
 
