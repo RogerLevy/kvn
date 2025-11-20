@@ -6,6 +6,7 @@ mister-walk.png 16 8 tileset-from mister-walk.ts
 class: %mister
     %actor derive
     is-a %platformer
+    prop prd
 class;
 
 mister.ts animation idle.anm   0 3 range,
@@ -13,9 +14,27 @@ mister.ts animation crouch1.anm   4 frame,
 mister.ts animation crouch2.anm   5 6 range,
 mister-walk.ts animation walk.anm   0 2 range,
 
-: ?appear  #secrets @ TOTAL_SECRETS >= if appear idle then ;
+: between  over - rnd + ;
+: near?  >r >r -> x 2@ r> -> x 2@ dist r> <= ;
+
+: walkv  0.75 fac @ left = if negate then ;
+: l/r  2 rnd if left else right then ;
+: ?idle  prd @ passed? -exit  1.0 3.0 between prd !  idle ;
+: ?walk  prd @ passed? -exit  1.0 5.0 between prd !  l/r turn  walk ;
+: ?appear  #secrets @ TOTAL_SECRETS >= if appear ?idle then ;
+: !flip  0 fac @ left = if h| then a.flp ! ;
+: turnaround  fac @ left = if right else left then turn ;
+: ?bump  vx @ -exit  lwall? rwall? or -exit  turnaround ;
+: bgcol  x1 2@ w1 2@ 1 1 2- playfield tmcol> ?bump ;
+: meet?  fac @ p1 -> fac @ <>  me p1 32. near? and ;
+: part?  meet? not ;    
+: play  crouch1.anm 0.1 cycle  0 vx !  act> a.done @ -exit  
+    crouch2.anm 0.2 cycle  act>  part? if idle then ;
+: ?play  meet? -exit  play ;
+: /physics  physics> bgcol !flip ;
 
 class: %mister
-:: ->idle  idle.anm 0.25 cycle 0 h| a.flp ! act> ;
-:: init  vanish act> ?appear ;
+:: ->walk  walk.anm 0.25 cycle act> walkv vx ! ?idle ?play ;
+:: ->idle  idle.anm 0.25 cycle 0 h| a.flp ! 0 vx ! act> ?walk ?play ;
+:: init  /physics vanish act> ?appear ;
 class;

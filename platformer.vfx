@@ -163,7 +163,12 @@ c: crumbler %actor ;
 ;
 
 public
-: platformer-physics  apply-gravity solid-collisions !flip ;
+
+: platformer-physics  
+    apply-gravity
+    solid-collisions
+    !flip ;
+
 : /platformer ( - ) max-hp @ hp ! ?walk ?idle physics> platformer-physics ;
 : playable  persist can-travel on right turn ;
 : solidity-hitbox! ( x y w h - ) w1 2! x1 2! ;
