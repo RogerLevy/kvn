@@ -44,8 +44,7 @@ kvn.ts animation splat.anm   14 33 range,
 
 \ Spikes death
 : ?spikes
-    vy @ 0 >= -exit
-    hp @ -exit 
+    falling @ -exit
     0 0 +tile@ instakill? -exit
     die ;
 
