@@ -63,11 +63,11 @@
             }
         },
         "menu.tmj": {
-            "scale": 3,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -1730.1666666666665,
-                "y": -95
+                "x": -2448,
+                "y": -47
             }
         },
         "room-blank.tmj": {
@@ -79,35 +79,35 @@
             }
         },
         "room-end.tmj": {
-            "scale": 3,
-            "selectedLayer": 0,
-            "viewCenter": {
-                "x": 37.16666666666666,
-                "y": 124.66666666666667
-            }
-        },
-        "room-first-01.tmj": {
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 370.25,
-                "y": 183.5
+                "x": 223.75,
+                "y": 220
+            }
+        },
+        "room-first-01.tmj": {
+            "scale": 1.5,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2843.6666666666665,
+                "y": 414.66666666666663
             }
         },
         "room-giger-01.tmj": {
-            "scale": 0.75,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -455.33333333333326,
-                "y": 145.33333333333331
+                "x": 194.16666666666669,
+                "y": 123.33333333333331
             }
         },
         "room-giger-02.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1017.5,
-                "y": 117
+                "x": -1708.8333333333333,
+                "y": -45
             }
         },
         "room-giger-03.tmj": {
@@ -215,19 +215,19 @@
             }
         },
         "room-test-11.tmj": {
-            "scale": 2,
+            "scale": 5.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 205.25,
-                "y": 363
+                "x": 1535,
+                "y": 115.0909090909091
             }
         },
         "room-test-12.tmj": {
-            "scale": 3,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 423.5,
-                "y": 27
+                "x": 191.66666666666663,
+                "y": 45.33333333333334
             }
         },
         "room-test-13.tmj": {
@@ -239,11 +239,11 @@
             }
         },
         "room-test-14.tmj": {
-            "scale": 4,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 38.625,
-                "y": 87.5
+                "x": -1006.9999999999999,
+                "y": 85.33333333333334
             }
         },
         "room-test-15.tmj": {
