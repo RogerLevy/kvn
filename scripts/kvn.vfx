@@ -55,6 +55,7 @@ kvn.ts animation splat.anm   14 33 range,
 : splat
     0 fd ! 
     -collisions
+    0 0 vx 2!
     splat.anm 0.25 cycle
     *beep10*
     act> a.done @ -exit anm off

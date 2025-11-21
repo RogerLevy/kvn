@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "room-end.tmj",
+    "activeFile": "menu.tmj",
     "expandedProjectPaths": [
         "."
     ],
@@ -27,7 +27,7 @@
         },
         "bg.tsx": {
             "dynamicWrapping": false,
-            "scaleInDock": 2,
+            "scaleInDock": 1.5,
             "scaleInEditor": 4
         },
         "kvn-world-30.tmj": {
@@ -66,8 +66,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -2448,
-                "y": -47
+                "x": -800.9999999999999,
+                "y": -27.333333333333314
             }
         },
         "room-blank.tmj": {
@@ -319,6 +319,8 @@
     ],
     "project": "kvn-long.tiled-project",
     "recentFiles": [
+        "room-first-01.tmj",
+        "room-end.tmj",
         "room-test-16.tmj",
         "room-long-01.tmj",
         "room-giger-03.tmj",
@@ -328,8 +330,6 @@
         "room-test-13.tmj",
         "room-test-12.tmj",
         "room-test-11.tmj",
-        "room-test-10.tmj",
-        "room-first-01.tmj",
-        "menu.tmj"
+        "room-test-10.tmj"
     ]
 }
