@@ -66,8 +66,8 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -800.9999999999999,
-                "y": -27.333333333333314
+                "x": -717.6666666666666,
+                "y": -47.333333333333314
             }
         },
         "room-blank.tmj": {
@@ -82,104 +82,104 @@
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 223.75,
-                "y": 220
+                "x": 350.75,
+                "y": 165
             }
         },
         "room-first-01.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2843.6666666666665,
-                "y": 414.66666666666663
+                "x": 2927,
+                "y": 394.66666666666663
             }
         },
         "room-giger-01.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 194.16666666666669,
-                "y": 123.33333333333331
+                "x": 235.83333333333331,
+                "y": 113.33333333333334
             }
         },
         "room-giger-02.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -1708.8333333333333,
-                "y": -45
+                "x": 883.1666666666666,
+                "y": 156.66666666666666
             }
         },
         "room-giger-03.tmj": {
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 52.75,
-                "y": 216
+                "x": 115.25,
+                "y": 201
             }
         },
         "room-long-01.tmj": {
             "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2805,
-                "y": -190
+                "x": 3055,
+                "y": -250
             }
         },
         "room-test-01.tmj": {
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 291.5,
-                "y": 217
+                "x": 416.5,
+                "y": 187
             }
         },
         "room-test-02.tmj": {
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 102.5,
-                "y": 111
+                "x": 227.5,
+                "y": 81
             }
         },
         "room-test-03.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 215.83333333333331,
-                "y": 90.66666666666667
+                "x": 257.5,
+                "y": 80.66666666666666
             }
         },
         "room-test-04.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 234.33333333333331,
-                "y": 221.33333333333334
+                "x": 317.66666666666663,
+                "y": 201.33333333333331
             }
         },
         "room-test-05.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 399.8333333333333,
-                "y": 215.33333333333331
+                "x": 441.5,
+                "y": 205.33333333333331
             }
         },
         "room-test-06.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 105.66666666666663,
-                "y": 198
+                "x": 188.99999999999997,
+                "y": 178
             }
         },
         "room-test-07.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 405.16666666666663,
-                "y": 401
+                "x": 446.8333333333333,
+                "y": 391
             }
         },
         "room-test-08-2.tmj": {
@@ -194,56 +194,56 @@
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 432.25,
-                "y": 211
+                "x": 494.75,
+                "y": 196
             }
         },
         "room-test-09.tmj": {
             "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -1893.25,
-                "y": 581
+                "x": -1830.75,
+                "y": 566
             }
         },
         "room-test-10.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 317,
-                "y": 66
+                "x": 400.33333333333337,
+                "y": 46
             }
         },
         "room-test-11.tmj": {
             "scale": 5.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1535,
-                "y": 115.0909090909091
+                "x": 1557.7272727272727,
+                "y": 109.63636363636363
             }
         },
         "room-test-12.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 191.66666666666663,
-                "y": 45.33333333333334
+                "x": 275,
+                "y": 25.333333333333314
             }
         },
         "room-test-13.tmj": {
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 184.66666666666663,
-                "y": 145.33333333333331
+                "x": 351.33333333333326,
+                "y": 105.33333333333331
             }
         },
         "room-test-14.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -1006.9999999999999,
-                "y": 85.33333333333334
+                "x": -923.6666666666666,
+                "y": 65.33333333333331
             }
         },
         "room-test-15.tmj": {
@@ -258,8 +258,8 @@
             "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 471.33333333333326,
-                "y": 290.6666666666667
+                "x": 638,
+                "y": 250.66666666666663
             }
         },
         "test/room000.dat": {
