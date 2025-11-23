@@ -187,6 +187,7 @@ is voice?
 ' *beep3* 9 sound-priority \ game over 
 ' *beep18* 9 sound-priority \ death
 ' *beep8* 1 sound-priority \ drop
+' *bell* 9 sound-priority
 \ ' *beep9* 9 sound-priority \ baby
 ' *beep10* 3 sound-priority \ splat
 ' *beep11* 2 sound-priority \ door
@@ -218,12 +219,14 @@ c: secret %actor ;
 c: %start %actor ;
 c: lift1 %actor ;
 c: %mister %actor ;
+c: %bell %bell ;
 
 bg.ts -> #tiles @ cell array tile-classes
 secret 22 tile-classes [] !
 %start 130 tile-classes [] !
 lift1 166 tile-classes [] !
 %mister 257 tile-classes [] !
+%bell 258 tile-classes [] !
 
 : tile>class
     dup bg.ts -> #tiles @ 0 swap within? not if drop 0 exit then

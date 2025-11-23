@@ -1,4 +1,12 @@
 { "compressionlevel":-1,
+ "editorsettings":
+    {
+     "export":
+        {
+         "format":"kvn-room",
+         "target":"..\/..\/..\/dat\/map\/room000.dat"
+        }
+    },
  "height":30,
  "infinite":false,
  "layers":[

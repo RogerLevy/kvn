@@ -31,11 +31,11 @@
             "scaleInEditor": 4
         },
         "endmsg.tmj": {
-            "scale": 2,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 163.75,
-                "y": 142.5
+                "x": -2567.1666666666665,
+                "y": -297.3333333333333
             }
         },
         "kvn-world-30.tmj": {
@@ -98,8 +98,8 @@
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2769.5,
-                "y": 295.3333333333333
+                "x": 312.8333333333333,
+                "y": 182.66666666666666
             }
         },
         "room-giger-01.tmj": {
