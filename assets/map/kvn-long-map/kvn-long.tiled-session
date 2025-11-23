@@ -30,6 +30,14 @@
             "scaleInDock": 1.5,
             "scaleInEditor": 4
         },
+        "endmsg.tmj": {
+            "scale": 2,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 163.75,
+                "y": 142.5
+            }
+        },
         "kvn-world-30.tmj": {
             "scale": 0.5,
             "selectedLayer": 0,
@@ -63,11 +71,11 @@
             }
         },
         "menu.tmj": {
-            "scale": 1.5,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -717.6666666666666,
-                "y": -47.333333333333314
+                "x": 182,
+                "y": 157.33333333333331
             }
         },
         "room-blank.tmj": {
@@ -79,19 +87,19 @@
             }
         },
         "room-end.tmj": {
-            "scale": 2,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 350.75,
-                "y": 165
+                "x": 106,
+                "y": 110.66666666666663
             }
         },
         "room-first-01.tmj": {
-            "scale": 1.5,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 2927,
-                "y": 394.66666666666663
+                "x": 2769.5,
+                "y": 295.3333333333333
             }
         },
         "room-giger-01.tmj": {
@@ -119,19 +127,19 @@
             }
         },
         "room-long-01.tmj": {
-            "scale": 0.5,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 3055,
-                "y": -250
+                "x": 3049,
+                "y": 125.33333333333331
             }
         },
         "room-test-01.tmj": {
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 416.5,
-                "y": 187
+                "x": 2408.5,
+                "y": 717
             }
         },
         "room-test-02.tmj": {
@@ -287,12 +295,12 @@
     "loadedWorlds": [
         "C:/Users/roger/Desktop/dev/vfxland5_starling/games/kvn/assets/map/kvn-long-map/kvn-long.world"
     ],
-    "map.height": 20,
+    "map.height": 30,
     "map.lastUsedExportFilter": "KVN Room Importer (*.dat)",
     "map.lastUsedFormat": "json",
     "map.tileHeight": 8,
     "map.tileWidth": 8,
-    "map.width": 20,
+    "map.width": 40,
     "openFiles": [
         "room-first-01.tmj",
         "menu.tmj",
