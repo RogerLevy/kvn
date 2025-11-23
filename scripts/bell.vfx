@@ -7,11 +7,17 @@ bitmap assets/gfx/bell.png
 bell.png 24 8 tileset-from bell.ts
 bell.ts animation ring.anm  1 frame, 1 frame, 0 frame, 2 frame, 2 frame, 0 frame, 
 
-: ring  
+: ring
+    finished on
+    clock off
     ring.anm 0.2 cycle 
     0 ctr !
-    begin 1 ctr +! *bell* act> 0.25 passed? -exit ctr @ 18 = until 
-    anm off  bell.ts 0 tile bmp ! ;
+    begin 1 ctr +! *bell* act> 0.25 passed? -exit ctr @ 14 = until
+    0.1 a.spd ! 
+    begin 1 ctr +! *bell* act> 0.5 passed? -exit ctr @ 18 = until 
+    anm off  bell.ts 0 tile bmp ! 
+    s" finish" gevent 
+    act> 9.0 passed? -exit  s" options" gevent ;
 
 %bell :: init
     bell.ts 0 tile bmp ! 

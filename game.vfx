@@ -1,8 +1,6 @@
 : control
-    <t> pressed? if clock toggle then
-    <m> pressed? if mute toggle then
-    options-key-pressed?
-        if s" options" gevent then
+    \ <m> pressed? if mute toggle then
+    options-key-pressed? if s" options" gevent then
 ;
 
 : muting  mute @ not 0.25 and gain ;
@@ -12,6 +10,7 @@
 : think  generate animate step instalment control muting ;
 
 : init-state ( - )
+    finished off
     divest  
     0 0 to gametime  
     clear-world ;

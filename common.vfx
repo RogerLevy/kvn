@@ -12,12 +12,12 @@ debug @ [if] <enter> [else] <esc> [then] constant <subscreen>
 dummy value p1
 variable #deaths
 create item$ 17 allot&erase 
-variable clock  clock on
 variable payment
 variable mute
 variable #secrets
 18 constant TOTAL_SECRETS
 variable can-save
+variable finished
 
 class: %actor
     prop can-travel <save
@@ -159,9 +159,7 @@ variable money-flashing
     s[ 1 ?key ?key ?key drop ?ring s] print  \ 5 8 * 0 +at
     debug @ if .player-coords then
     320 8 8 * - 0 at
-    clock @ if
         s[ hrs 2#. ." :" mins 2#. ." :" secs 2#. s] print
-    then
 ;
 
 \ Audio
@@ -188,7 +186,7 @@ is voice?
 ' *beep18* 9 sound-priority \ death
 ' *beep8* 1 sound-priority \ drop
 ' *bell* 9 sound-priority
-\ ' *beep9* 9 sound-priority \ baby
+' *beep9* 9 sound-priority \ finish
 ' *beep10* 3 sound-priority \ splat
 ' *beep11* 2 sound-priority \ door
 ' *beep13* 2 sound-priority \ fall

@@ -47,30 +47,35 @@ redef : accel ( vx. vy. - ) vx 2+! ;
 : in-air?  on-ground @ not ;
 : apply-gravity  climbing @ ?exit  vy @ gravity @ + terminal-vy @ min vy ! ;
 
-: ?jump  <jump> pressed? if jump then ;
-: ?walk  <left> held? if left turn walk then  <right> held? if right turn walk then ;
+: ?control  finished @ -exit r> drop ;
+
+: ?jump  ?control  <jump> pressed? if jump then ;
+: ?walk  ?control  <left> held? if left turn walk then  <right> held? if right turn walk then ;
 : ?idle  <left> held? <right> held? or not if idle then ;
 : ?dirkey  fac @ left = if <left> else <right> then ;
 : ?stop  ?dirkey letgo? if idle then ;
 : ?stick  ?dirkey held? not if .666 dup dampen then ;
 : stand  bottom vy @ + gap >p umod 1. + negate y +!  0 vy ! ;
 : ?climb  
+    ?control  
     <down> held? if 0 1 +tile@ climbable? if 2. y +! climb exit then then 
     <down> held? <up> held? or if 0 0 +tile@ climbable? if climb then then ;
 : ?stepoff  climbing @ ?exit  vy @ 0> if fall then ;
 : to-a-stop  .825 1. dampen vx @ abs .15 < if 0 vx ! then ;
 
 : control-in-air
-    <left> held? if  air-control @ negate vx +!  then
-    <right> held? if  air-control @ vx +!  then
     .98 1. dampen 
     walk-speed @ clamp-vx
+    ?control  
+    <left> held? if  air-control @ negate vx +!  then
+    <right> held? if  air-control @ vx +!  then
     vx @ 0< if left turn then
     vx @ 0> if right turn then 
 ;
 
 : control-jump
     vy @ 0<  <jump> held? and if 
+        ?control  
         rise-power @ negate vy +!  control-in-air
     else
         fall

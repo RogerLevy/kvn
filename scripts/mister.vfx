@@ -31,7 +31,8 @@ mister-walk.ts animation walk.anm   0 2 range,
 : play  crouch1.anm 0.1 cycle  0 vx !  act> a.done @ -exit  
     crouch2.anm 0.2 cycle  act>  part? if idle then ;
 : ?play  meet? -exit  play ;
-: /physics  physics> bgcol !flip ;
+: ?finish  finished @ -exit  halt ;
+: /physics  physics> bgcol !flip ?finish ;
 
 class: %mister
 :: ->walk  walk.anm 0.25 cycle act> walkv vx ! ?idle ?play ;

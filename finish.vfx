@@ -1,0 +1,14 @@
+
+: put-endmsg
+    29 screen playfield 
+    tmw tmh * for 
+        over @ -1 <> if
+            over @ over !
+        then
+        cell cell 2+
+    loop 2drop ;
+
+: finish
+    ." finish" cr
+    put-endmsg 
+    *finish* ;
