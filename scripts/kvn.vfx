@@ -96,7 +96,7 @@ kvn.ts animation splat.anm   14 33 range,
 \ Logic
 class: kvn
 :: ->climb platformer:->climb climb.anm 0 cycle ;
-:: kill me unload s" death" gevent ;
+:: kill me unload vanish s" death" gevent ;
 :: ->jump  platformer:->jump jump.anm 1. cycle *beep14* ;
 :: ->walk  platformer:->walk ?walkanm +act> movelegs ;
 :: ->idle  platformer:->idle ?idleanm +act> movelegs ;

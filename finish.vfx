@@ -9,6 +9,5 @@
     loop 2drop ;
 
 : finish
-    ." finish" cr
     put-endmsg 
     *finish* ;

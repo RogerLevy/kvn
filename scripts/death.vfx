@@ -21,7 +21,7 @@ defer paying
 
 \ Movie
 : movie
-    blank 
+    just blank 
     1.5 timer>
         ['] paying2 is paying
         c" money" have 1000 >= if
