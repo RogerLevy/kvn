@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "menu.tmj",
+    "activeFile": "",
     "expandedProjectPaths": [
         "."
     ],
@@ -27,15 +27,15 @@
         },
         "bg.tsx": {
             "dynamicWrapping": false,
-            "scaleInDock": 1.5,
+            "scaleInDock": 3,
             "scaleInEditor": 4
         },
         "endmsg.tmj": {
-            "scale": 3,
+            "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -2567.1666666666665,
-                "y": -297.3333333333333
+                "x": -2542.333333333333,
+                "y": -344.66666666666663
             }
         },
         "kvn-world-30.tmj": {
@@ -71,11 +71,11 @@
             }
         },
         "menu.tmj": {
-            "scale": 0.75,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 182,
-                "y": 157.33333333333331
+                "x": -894.5,
+                "y": -142.66666666666666
             }
         },
         "room-blank.tmj": {
@@ -91,22 +91,22 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 106,
-                "y": 110.66666666666663
+                "y": 110.66666666666669
             }
         },
         "room-first-01.tmj": {
-            "scale": 3,
+            "scale": 0.75,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 312.8333333333333,
-                "y": 182.66666666666666
+                "x": 1378,
+                "y": 420
             }
         },
         "room-giger-01.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 235.83333333333331,
+                "x": 235.83333333333334,
                 "y": 113.33333333333334
             }
         },
@@ -114,16 +114,16 @@
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 883.1666666666666,
-                "y": 156.66666666666666
+                "x": 883.1666666666665,
+                "y": 156.66666666666663
             }
         },
         "room-giger-03.tmj": {
-            "scale": 2,
+            "scale": 5.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 115.25,
-                "y": 201
+                "x": 238.09090909090907,
+                "y": 205.09090909090912
             }
         },
         "room-long-01.tmj": {
@@ -131,7 +131,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 3049,
-                "y": 125.33333333333331
+                "y": 125.33333333333334
             }
         },
         "room-test-01.tmj": {
@@ -151,19 +151,19 @@
             }
         },
         "room-test-03.tmj": {
-            "scale": 3,
+            "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 257.5,
-                "y": 80.66666666666666
+                "x": 82.75,
+                "y": 224.5
             }
         },
         "room-test-04.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 317.66666666666663,
-                "y": 201.33333333333331
+                "x": 317.6666666666667,
+                "y": 201.33333333333334
             }
         },
         "room-test-05.tmj": {
@@ -175,18 +175,18 @@
             }
         },
         "room-test-06.tmj": {
-            "scale": 1.5,
+            "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 188.99999999999997,
-                "y": 178
+                "x": -8.75,
+                "y": 229
             }
         },
         "room-test-07.tmj": {
             "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 446.8333333333333,
+                "x": 446.83333333333326,
                 "y": 391
             }
         },
@@ -218,7 +218,7 @@
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 400.33333333333337,
+                "x": 400.33333333333326,
                 "y": 46
             }
         },
@@ -226,8 +226,8 @@
             "scale": 5.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1557.7272727272727,
-                "y": 109.63636363636363
+                "x": 1557.727272727273,
+                "y": 109.63636363636365
             }
         },
         "room-test-12.tmj": {
@@ -235,23 +235,23 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 275,
-                "y": 25.333333333333314
+                "y": 25.33333333333337
             }
         },
         "room-test-13.tmj": {
-            "scale": 0.75,
+            "scale": 2,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 351.33333333333326,
-                "y": 105.33333333333331
+                "x": -338.75,
+                "y": 200.5
             }
         },
         "room-test-14.tmj": {
             "scale": 1.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": -923.6666666666666,
-                "y": 65.33333333333331
+                "x": -923.6666666666665,
+                "y": 65.33333333333334
             }
         },
         "room-test-15.tmj": {
@@ -267,7 +267,7 @@
             "selectedLayer": 0,
             "viewCenter": {
                 "x": 638,
-                "y": 250.66666666666663
+                "y": 250.66666666666669
             }
         },
         "test/room000.dat": {
@@ -302,6 +302,9 @@
     "map.tileWidth": 8,
     "map.width": 40,
     "openFiles": [
+    ],
+    "project": "kvn-long.tiled-project",
+    "recentFiles": [
         "room-first-01.tmj",
         "menu.tmj",
         "room-test-01.tmj",
@@ -313,31 +316,6 @@
         "room-test-07.tmj",
         "room-test-08.tmj",
         "room-test-09.tmj",
-        "room-test-10.tmj",
-        "room-test-11.tmj",
-        "room-test-12.tmj",
-        "room-test-13.tmj",
-        "room-test-14.tmj",
-        "room-giger-01.tmj",
-        "room-giger-02.tmj",
-        "room-giger-03.tmj",
-        "room-long-01.tmj",
-        "room-test-16.tmj",
-        "room-end.tmj"
-    ],
-    "project": "kvn-long.tiled-project",
-    "recentFiles": [
-        "room-first-01.tmj",
-        "room-end.tmj",
-        "room-test-16.tmj",
-        "room-long-01.tmj",
-        "room-giger-03.tmj",
-        "room-giger-02.tmj",
-        "room-giger-01.tmj",
-        "room-test-14.tmj",
-        "room-test-13.tmj",
-        "room-test-12.tmj",
-        "room-test-11.tmj",
         "room-test-10.tmj"
     ]
 }
