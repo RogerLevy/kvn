@@ -49,7 +49,7 @@ defer paying
 public
 
 : death ( - )
-    death/ movie 
+    death>> movie 
     1 #deaths +!
     ['] paying1 is paying
     *beep18*

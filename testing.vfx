@@ -4,9 +4,11 @@ new game stock
 
 \ p1 -> x 2@   16. 0. 2+  2>i at  lift1 one constant lift0
 
-18 warp
+\ 18 warp
 \ p1 freemove
+\ 18 #secrets !
 
-18 #secrets !
+3 warp 
+p1 as 
 
 go
