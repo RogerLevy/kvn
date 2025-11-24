@@ -131,21 +131,28 @@ redef : warp   warp ?kvn drop ;
     y @ 0. <= if  x @ 236. -100 travel  then ;
 
 \ Status bar
-|| : ?key  dup c" key" have <= if 11 emit else ." -" then 1 + ;
-|| : ?ring c" ring" have if 9 emit else ." -" then ; 
-|| : p.2  p>f 2 (f.) type space ;
-|| : 2#.  0 <# # # #> type ;
-|| : .player-coords
+: ?key  dup c" key" have <= if 11 emit else ." -" then 1 + ;
+: ?ring c" ring" have if 9 emit else ." -" then ; 
+: p.2  p>f 2 (f.) type space ;
+: 2#.  0 <# # # #> type ;
+
+: .player-coords
     +m
     200e 0e 0.5e 1e 0e transform
     0 0 at
     s[ p1 [[ x @ p.2 y @ p.2 ]] s] print
     -m
 ;
+
+: .treasures
+    208 0 at  s[ 22 emit #secrets @ 2 u.r s] print ;
+
 : hrs  gametime 360000000 m/ 10 / ;
 : mins  gametime 60000000 m/ 60 mod ;
 : secs  gametime 1000000 m/ 60 mod ;
+
 variable money-flashing
+
 : hud
     0 0 at
     s[ 320 8 / for space loop s] print  
@@ -157,7 +164,7 @@ variable money-flashing
     then 
     11 8 * 0 +at
     s[ 1 ?key ?key ?key drop ?ring s] print  \ 5 8 * 0 +at
-    debug @ if .player-coords then
+    debug @ if .player-coords else .treasures then
     320 8 8 * - 0 at
         s[ hrs 2#. ." :" mins 2#. ." :" secs 2#. s] print
 ;
