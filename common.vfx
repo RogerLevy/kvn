@@ -187,19 +187,25 @@ is voice?
     importance` rot >body -> id @` []! ;
 
 \ Sample priorities
-' *beep5* 2 sound-priority \ key
-' *beep2* 1 sound-priority \ collectible
-' *beep3* 9 sound-priority \ game over 
-' *beep18* 9 sound-priority \ death
-' *beep8* 1 sound-priority \ drop
-' *bell* 9 sound-priority
-' *beep9* 9 sound-priority \ finish
-' *beep10* 3 sound-priority \ splat
-' *beep11* 2 sound-priority \ door
-' *beep13* 2 sound-priority \ fall
 ' *beep14* 1 sound-priority \ jump
-' *beep15* 1 sound-priority \ drip
-' *beep17* 3 sound-priority \ secret
+\ ' *beep15* 1 sound-priority \ drip (unused)
+' *beep2* 1 sound-priority  \ collectible
+' *beep8* 1 sound-priority  \ drop landing
+
+' *beep12* 2 sound-priority \ land
+' *beep13* 2 sound-priority \ plummet
+
+' *beep5* 3 sound-priority  \ key
+' *beep11* 3 sound-priority \ door
+
+' *beep10* 8 sound-priority \ splat
+' *beep17* 8 sound-priority \ secret
+
+' *beep3* 9 sound-priority  \ game over 
+' *beep18* 9 sound-priority \ death
+' *bell* 9 sound-priority   \ bell
+' *beep9* 9 sound-priority  \ finish
+
 
 \ Generator
 c: slimedrop ;
