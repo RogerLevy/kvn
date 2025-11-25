@@ -87,19 +87,19 @@
             }
         },
         "room-end.tmj": {
-            "scale": 0.75,
+            "scale": 3,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 106,
-                "y": 110.66666666666669
+                "x": 120.5,
+                "y": 268.3333333333333
             }
         },
         "room-first-01.tmj": {
-            "scale": 0.75,
+            "scale": 0.5,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 1378,
-                "y": 420
+                "x": 2755,
+                "y": 704
             }
         },
         "room-giger-01.tmj": {
