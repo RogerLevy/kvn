@@ -11,6 +11,8 @@
 
 : init-state ( - )
     finished off
+    0 #secrets !
+    0 #deaths !
     divest  
     0 0 to gametime  
     clear-world ;

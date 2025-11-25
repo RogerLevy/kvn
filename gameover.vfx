@@ -19,7 +19,6 @@ private
 
 public : gameover
     gameover/ blank blank movie skipable 
-    1 #deaths +!
     s" kvn.sav" delete-file drop
     *beep3*
     show>
