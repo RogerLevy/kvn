@@ -42,7 +42,7 @@ class;
 
 \ Misc
 : gevent
-    2dup >pad find not if
+    2dup sfind not if
         drop cr ." Global event not found: " type 
     else -rot type cr execute then ;
 
@@ -189,11 +189,11 @@ is voice?
 \ Sample priorities
 ' *beep14* 1 sound-priority \ jump
 \ ' *beep15* 1 sound-priority \ drip (unused)
-' *beep2* 1 sound-priority  \ collectible
 ' *beep8* 1 sound-priority  \ drop landing
 
+' *beep2* 2 sound-priority  \ collectible
 ' *beep12* 2 sound-priority \ land
-' *beep13* 2 sound-priority \ plummet
+' *beep13* 3 sound-priority \ plummet
 
 ' *beep5* 3 sound-priority  \ key
 ' *beep11* 3 sound-priority \ door

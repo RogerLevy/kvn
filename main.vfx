@@ -6,7 +6,7 @@
 320 constant gamew
 240 constant gameh
 8 constant gap
-100 constant #actors
+5000 constant #actors
 30 constant #rooms
 
 \ Load engine
