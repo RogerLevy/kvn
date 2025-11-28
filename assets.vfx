@@ -1,6 +1,6 @@
 bitmap assets/gfx/bg.png
 bg.png 8 8 tileset-from bg.ts
-bg.ts 0 tile pile !
+bg.ts 0 tile pile!
 s" assets/gfx/bg.dat" bg.ts load-metas-for
 
 sample assets/smp/beep1.wav
