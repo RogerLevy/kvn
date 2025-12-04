@@ -1,0 +1,3 @@
+*.vfx linguist-language=Forth
+*.fth linguist-language=Forth
+*.f linguist-language=Forth
